@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:showIn="@layout/activity_display">
+
+    <TextView
+        android:id="@+id/libelle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/libelleFilter"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+
+
+
+
+    <TextView
+        android:id="@+id/counter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/blankCounter"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_below="@id/libelle"
+        />
+
+    <displaylist.collectionbdclient.components.CustomEditText
+        android:id="@+id/search"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/libelle"
+        android:layout_toRightOf="@+id/libelle"
+        android:hint="@string/filterToolTip"
+         />
+
+</merge>

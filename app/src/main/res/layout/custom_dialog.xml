@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent" >
+
+
+
+    <TextView
+        android:id="@+id/dialog_name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#ff000000"
+        android:text="@string/dialogName"
+        android:textStyle="bold"
+        />
+
+    <ImageView
+        android:id="@+id/dialog_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="image field"
+        android:background="@drawable/ic_launcher"
+        android:layout_below="@id/dialog_name"/>
+    <TextView
+        android:id="@+id/dialog_editeur"
+        android:layout_width="match_parent"
+        android:textColor="#ff009900"
+        android:layout_height="wrap_content"
+        android:text="editor"
+        android:textStyle="bold"
+        android:layout_below="@id/dialog_name"
+        android:layout_toEndOf="@+id/dialog_image"/>
+
+    <TextView
+        android:id="@+id/dialog_numero"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dialog_editeur"
+        android:layout_toRightOf="@+id/dialog_image"
+        android:text="@string/dialogNumero"
+        android:textColor="#ff02a9ff"
+        android:textStyle="italic"/>
+
+    <ImageView
+        android:id="@+id/dialog_fini"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:textStyle="bold|italic"
+        android:textColor="#ff28ff5f"
+        android:src="@drawable/cross"
+        android:typeface="serif"
+        android:layout_alignTop="@id/dialog_numero"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/dialog_manquant"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dialog_numero"
+        android:layout_toRightOf="@+id/dialog_image"
+        android:text="@string/dialogManquant"
+        android:textColor="#ffff0e1c"
+        android:textStyle="italic"/>
+
+</RelativeLayout >
