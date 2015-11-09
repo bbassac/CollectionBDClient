@@ -21,6 +21,7 @@ public class FileUtils {
 
     private static String offlineModeFile = "oldjson.txt";
     private static String crlf = System.getProperty("line.separator");
+    private static String directoryDownloads = Environment.DIRECTORY_DCIM;
 
     public static  boolean saveContent(Activity activity,String content) {
         return saveContentToFile(activity,content,offlineModeFile);
@@ -29,7 +30,7 @@ public class FileUtils {
     public static boolean saveContentToFile(Activity activity,String content,String fileName) {
         try {
             File f = new File(Environment.getExternalStoragePublicDirectory(
-                    Environment.DIRECTORY_DOWNLOADS), fileName);
+                    directoryDownloads), fileName);
             FileOutputStream newS = new FileOutputStream(f, false);
 
             Writer out = new OutputStreamWriter(newS);
@@ -45,7 +46,7 @@ public class FileUtils {
     public static String loadFile(Activity activity) {
         try {
             File f = new File(Environment.getExternalStoragePublicDirectory(
-                    Environment.DIRECTORY_DOWNLOADS), offlineModeFile);
+                    directoryDownloads), offlineModeFile);
             FileInputStream fis = new FileInputStream(f);
             BufferedReader r = new BufferedReader(new InputStreamReader(fis));
             String sb = buildString(r);
