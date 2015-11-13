@@ -17,11 +17,22 @@ android {
         versionName "1.0"
         multiDexEnabled false
     }
+
+    signingConfigs {
+        release {
+            storeFile file("AndroidKeystore.jks")
+            storePassword "000000"
+            keyAlias "0000"
+            keyPassword "000000"
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled true
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
         debug {
             minifyEnabled false
