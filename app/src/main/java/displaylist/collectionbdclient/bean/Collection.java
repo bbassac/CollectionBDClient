@@ -35,7 +35,7 @@ public class Collection {
 	public String toString() {
 		ObjectMapper mapper = new ObjectMapper();
 		try {
-			return mapper.defaultPrettyPrintingWriter().writeValueAsString(this);
+			return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(this);
 		} catch (IOException e) {
 			return "[]";
 		}

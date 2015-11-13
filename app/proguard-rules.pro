@@ -15,3 +15,8 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+#Pour la librairie Jackson (parsing JSON)
+-keep class org.codehaus.jackson.** { *; }
+-dontwarn org.**
+-keep class com.squareup.picasso.** { *; }
+-dontwarn com.squareup.picasso.**

@@ -3,7 +3,6 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 18
     buildToolsVersion "21.0.0"
-
     dexOptions {
         jumboMode true
         incremental = true
@@ -16,12 +15,19 @@ android {
         targetSdkVersion 20
         versionCode 1
         versionName "1.0"
-        multiDexEnabled true
+        multiDexEnabled false
     }
     buildTypes {
         release {
             minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
         }
     }
     packagingOptions {
@@ -41,6 +47,5 @@ dependencies {
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'org.codehaus.jackson:jackson-mapper-asl:1.9.13'
     compile 'org.codehaus.jackson:jackson-core-asl:1.9.13'
-    testCompile 'org.robolectric:robolectric:3.0-rc3'
-    testCompile 'org.apache.maven:maven-ant-tasks:2.1.3'
+    testCompile 'junit:junit:4.12'
 }
