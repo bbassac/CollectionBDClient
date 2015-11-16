@@ -20,3 +20,6 @@
 -dontwarn org.**
 -keep class com.squareup.picasso.** { *; }
 -dontwarn com.squareup.picasso.**
+#-injars jackson-mapper-asl-1.9.13.jar(!META-INF/ASL2.0)
+#-injars jackson-mapper-asl-1.9.13.jar(!META-INF/LICENSE)
+#-injars jackson-mapper-asl-1.9.13.jar(!META-INF/NOTICE)

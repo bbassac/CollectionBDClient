@@ -19,7 +19,7 @@
         android:id="@+id/dialog_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="image field"
+        android:contentDescription="@string/popup.image.description"
         android:background="@drawable/ic_launcher"
         android:layout_below="@id/dialog_name"/>
     <TextView
@@ -27,7 +27,7 @@
         android:layout_width="match_parent"
         android:textColor="#ff009900"
         android:layout_height="wrap_content"
-        android:text="editor"
+        android:text="@string/popup.editor"
         android:textStyle="bold"
         android:layout_below="@id/dialog_name"
         android:layout_toEndOf="@+id/dialog_image"/>
@@ -51,7 +51,8 @@
         android:src="@drawable/cross"
         android:typeface="serif"
         android:layout_alignTop="@id/dialog_numero"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:contentDescription="@string/popup.fini.description" />
 
     <TextView
         android:id="@+id/dialog_manquant"

@@ -20,6 +20,7 @@ import com.squareup.picasso.Picasso;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Field;
+import java.util.Locale;
 
 import displaylist.collectionbdclient.activities.DisplayActivity;
 import displaylist.collectionbdclient.components.MyOnClickListener;
@@ -113,10 +114,10 @@ public class ListBDAdapter extends BaseAdapter implements Filterable{
                 Collection filteredList = new Collection();
                 for(Serie serie: unfilteredCollection.getListeSerie()){
 
-                    if(     serie.getNom().toLowerCase().contains(constraint) ||
-                            SerieUtils.getStringManquant(serie).toLowerCase().contains(constraint) ||
-                            SerieUtils.getStringPossede(serie).toLowerCase().contains(constraint) ||
-                            serie.getEditeur().toLowerCase().contains(constraint) ) {
+                    if(     serie.getNom().toLowerCase(Locale.FRANCE).contains(constraint) ||
+                            SerieUtils.getStringManquant(serie).toLowerCase(Locale.FRANCE).contains(constraint) ||
+                            SerieUtils.getStringPossede(serie).toLowerCase(Locale.FRANCE).contains(constraint) ||
+                            serie.getEditeur().toLowerCase(Locale.FRANCE).contains(constraint) ) {
                         filteredList.addBD(serie);
                     }
                 }
