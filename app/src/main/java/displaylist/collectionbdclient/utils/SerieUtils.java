@@ -1,7 +1,5 @@
 package displaylist.collectionbdclient.utils;
 
-import java.util.List;
-
 import displaylist.collectionbdclient.R;
 import displaylist.collectionbdclient.bean.Bd;
 import displaylist.collectionbdclient.bean.Collection;

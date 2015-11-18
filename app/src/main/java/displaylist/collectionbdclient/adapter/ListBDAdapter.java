@@ -2,10 +2,7 @@ package displaylist.collectionbdclient.adapter;
 
 
 import android.content.Context;
-import android.content.res.AssetManager;
-import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,16 +14,13 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.lang.reflect.Field;
 import java.util.Locale;
 
-import displaylist.collectionbdclient.activities.DisplayActivity;
-import displaylist.collectionbdclient.components.MyOnClickListener;
 import displaylist.collectionbdclient.R;
-import displaylist.collectionbdclient.bean.Serie;
+import displaylist.collectionbdclient.activities.DisplayActivity;
 import displaylist.collectionbdclient.bean.Collection;
+import displaylist.collectionbdclient.bean.Serie;
+import displaylist.collectionbdclient.components.MyOnClickListener;
 import displaylist.collectionbdclient.utils.SerieUtils;
 
 public class ListBDAdapter extends BaseAdapter implements Filterable{
@@ -84,7 +78,7 @@ public class ListBDAdapter extends BaseAdapter implements Filterable{
 
 		imageview.setImageBitmap(null);
 		if(!TextUtils.isEmpty(serie.getImageUrl())) {
-            Picasso.with(context).load("file:///android_asset/" + serie.getNom() + ".jpg").resize(100, 120).into(imageview);
+            Picasso.with(context).load("file:///android_asset/img/" + serie.getNom() + ".jpg").resize(100, 120).into(imageview);
 		}
 
 		return view;

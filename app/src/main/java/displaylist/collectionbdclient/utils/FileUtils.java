@@ -1,8 +1,8 @@
 package displaylist.collectionbdclient.utils;
 
 import android.app.Activity;
+import android.content.pm.ApplicationInfo;
 import android.os.Environment;
-
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -12,10 +12,12 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
+import java.text.SimpleDateFormat;
+import java.util.TimeZone;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
-/**
- * Created by b.bassac on 18/12/2014.
- */
+
 public class FileUtils {
     public static String UPDATED_JSON = "listing2";
 
@@ -65,6 +67,22 @@ public class FileUtils {
             sb.append(line).append(crlf);
         }
         return sb.toString();
+    }
+
+    public static String getBuildDate(Activity activity){
+        String s = "";
+        try{
+            ApplicationInfo ai = activity.getPackageManager().getApplicationInfo(activity.getPackageName(), 0);
+            ZipFile zf = new ZipFile(ai.sourceDir);
+            ZipEntry ze = zf.getEntry("META-INF/MANIFEST.MF");
+            long time = ze.getTime();
+            SimpleDateFormat formatter = (SimpleDateFormat) SimpleDateFormat.getInstance();
+            formatter.setTimeZone(TimeZone.getTimeZone("gmt"));
+            s = formatter.format(new java.util.Date(time));
+            zf.close();
+        }catch(Exception e){
+        }
+        return s;
     }
 
 

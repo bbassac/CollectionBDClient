@@ -9,10 +9,10 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import displaylist.collectionbdclient.activities.DisplayActivity;
 import displaylist.collectionbdclient.R;
-import displaylist.collectionbdclient.bean.Serie;
+import displaylist.collectionbdclient.activities.DisplayActivity;
 import displaylist.collectionbdclient.bean.Collection;
+import displaylist.collectionbdclient.bean.Serie;
 import displaylist.collectionbdclient.utils.SerieUtils;
 
 /**
@@ -48,7 +48,7 @@ public class MyOnClickListener implements View.OnClickListener {
 		ImageView image = (ImageView) dialog.findViewById(R.id.dialog_image);
 		image.setImageBitmap(null);
 		if(!TextUtils.isEmpty(serie.getImageUrl())) {
-            Picasso.with(context).load("file:///android_asset/" + serie.getNom() + ".jpg").resize(100, 120).into(image);
+            Picasso.with(context).load("file:///android_asset/img/" + serie.getNom() + ".jpg").resize(100, 120).into(image);
 		}
 
 
