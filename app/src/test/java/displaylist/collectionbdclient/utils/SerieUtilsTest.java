@@ -15,7 +15,7 @@ public class SerieUtilsTest {
     @Test
     public void testGetStringPossede_vide() {
         Serie s = new Serie();
-        Bd bd = new Bd(1, "numero", "titre", "url");
+        Bd bd = new Bd(1L, "numero", "titre", "url");
         List<Bd> listPossede = new ArrayList<Bd>();
         listPossede.add(bd);
         s.setListPossede(listPossede);

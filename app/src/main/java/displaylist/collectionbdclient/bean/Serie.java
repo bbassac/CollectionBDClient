@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class Serie {
 
-	private int id;
+	private Long id;
 	private String nom;
     private List<Bd> listPossede;
 
@@ -23,7 +23,7 @@ public class Serie {
 	// and then "other" stuff:
 	protected Map<String,Object> other = new HashMap<String, Object>();
 
-    public Serie(int id, String nom, boolean fini) {
+    public Serie(Long id, String nom, boolean fini) {
         this.nom = nom;
         this.id = id;
         this.fini=fini;
@@ -50,11 +50,11 @@ public class Serie {
 
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

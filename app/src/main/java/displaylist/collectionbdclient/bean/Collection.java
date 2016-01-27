@@ -9,12 +9,20 @@ import java.util.List;
 
 public class Collection {
 
-	private List<Serie> listeSerie;
+    private Long id;
 
-
+    private List<Serie> listeSerie;
 	public Collection() {
 		listeSerie = new ArrayList<Serie>();
 	}
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
 	public List<Serie> getListeSerie() {
 		return listeSerie;

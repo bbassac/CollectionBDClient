@@ -4,14 +4,14 @@ package displaylist.collectionbdclient.bean;
  * Created by b.bassac on 12/01/2015.
  */
 public class Bd {
-    private int id;
+    private Long id;
     private String titre;
     private String numero;
     private String couvertureUrl;
 
     public Bd(){}
 
-    public Bd(int id, String numero, String titre,String url){
+    public Bd(Long id, String numero, String titre,String url){
         this.id=id;
         this.numero = numero;
         this.titre = titre;
@@ -34,11 +34,11 @@ public class Bd {
         this.numero = numero;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
