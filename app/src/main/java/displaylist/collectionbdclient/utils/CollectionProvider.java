@@ -8,6 +8,8 @@ import org.codehaus.jackson.JsonFactory;
 import org.codehaus.jackson.JsonParser;
 import org.codehaus.jackson.map.ObjectMapper;
 
+import java.io.ByteArrayInputStream;
+
 import displaylist.collectionbdclient.R;
 import displaylist.collectionbdclient.bean.Collection;
 
@@ -22,13 +24,13 @@ public class CollectionProvider {
         Collection listBD = null;
         try {
             stringJson = WSProvider.getJSONFromUrl(activity, activity.getString(R.string.url));
-            JsonParser jp = new JsonFactory().createJsonParser(stringJson);
+            JsonParser jp = new JsonFactory().createJsonParser(new ByteArrayInputStream(stringJson.getBytes("UTF-8")));
             //Jacksonize to bean
             listBD = new ObjectMapper().readValue(jp, Collection.class);
         } catch (Exception e) {
             ToastUtils.display(activity, e.getMessage());
         }
-        if (stringJson != null) {
+        if (stringJson != null  && listBD !=null) {
             FileUtils.saveContent(activity, stringJson);
             //FOR TEST
             FileUtils.saveContentToFile(activity, listBD.toString(), FileUtils.UPDATED_JSON);

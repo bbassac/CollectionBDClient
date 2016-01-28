@@ -13,6 +13,8 @@ import android.widget.ListView;
 import com.github.johnpersano.supertoasts.SuperActivityToast;
 import com.github.johnpersano.supertoasts.SuperToast;
 
+import java.util.Collections;
+
 import displaylist.collectionbdclient.R;
 import displaylist.collectionbdclient.adapter.ListBDAdapter;
 import displaylist.collectionbdclient.bean.Collection;
