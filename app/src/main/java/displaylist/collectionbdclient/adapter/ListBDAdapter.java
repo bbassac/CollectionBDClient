@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.Collections;
 import java.util.Locale;
 
 import displaylist.collectionbdclient.R;
@@ -73,10 +74,12 @@ public class ListBDAdapter extends BaseAdapter implements Filterable{
 		((ImageView) view.findViewById(R.id.fini)).setImageResource(SerieUtils.getResourceFini(serie));
 		((TextView) view.findViewById(R.id.manquant)).setText(SerieUtils.getStringManquant(serie));
         ((TextView)view.findViewById(R.id.editeur)).setText(serie.getEditeur());
-        ((TextView) displayActivity.findViewById(R.id.counter)).setText("("+filteredCollection.getListeSerie().size()+")");
+        ((TextView) displayActivity.findViewById(R.id.counter)).setText("(" + filteredCollection.getListeSerie().size() + ")");
+        String nbPossede = String.valueOf(serie.getListPossede()==null ? "--" : serie.getListPossede().size());
+        String nbManquante = String.valueOf(serie.getListPossede() ==null || serie.getListManquante()==null ? "--" : serie.getListManquante().size()+serie.getListPossede().size());
+        ((TextView) view.findViewById(R.id.serie_counter)).setText(nbPossede+"/"+nbManquante);
 
-
-		imageview.setImageBitmap(null);
+        imageview.setImageBitmap(null);
 		if(!TextUtils.isEmpty(serie.getImageUrl())) {
             Picasso.with(context).load("file:///android_asset/img/" + serie.getNom() + ".jpg").resize(100, 120).into(imageview);
 		}

@@ -128,8 +128,8 @@ public class SerieUtils {
         return builder.toString();
     }
 
-    public static int getResourceFini(Serie s){
-        return (s.isFini() ? R.drawable.check : R.drawable.cross);
+    public static int getResourceFini(Serie serie){
+        return (serie.getListManquante().size()==0 ? R.drawable.check : R.drawable.cross);
     }
 
     public static Serie getBDById(Collection CollectionBDClient,int id){

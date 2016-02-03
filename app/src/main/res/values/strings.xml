@@ -21,4 +21,5 @@
     <string name="popup.image.description">image field</string>
     <string name="popup.editor">editor</string>
     <string name="popup.fini.description">collection completed ?</string>
+    <string name="listitem_counter">XX/YY</string>
 </resources>
