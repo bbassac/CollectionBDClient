@@ -1,36 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent" >
-
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
 
 
     <TextView
         android:id="@+id/dialog_name"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textColor="#ff000000"
         android:text="@string/dialogName"
-        android:textStyle="bold"
-        />
+        android:textColor="#ff000000"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/dialog_serie_counter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/dialog_editeur"
+        android:layout_alignBottom="@+id/dialog_editeur"
+        android:layout_alignEnd="@+id/dialog_name"
+        android:text="@string/listitem_counter"
+        android:textColor="#ff000000"
+        android:textStyle="bold" />
 
     <ImageView
         android:id="@+id/dialog_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/popup.image.description"
+        android:layout_below="@id/dialog_name"
         android:background="@drawable/ic_launcher"
-        android:layout_below="@id/dialog_name"/>
+        android:contentDescription="@string/popup.image.description" />
+
     <TextView
         android:id="@+id/dialog_editeur"
         android:layout_width="match_parent"
-        android:textColor="#ff009900"
         android:layout_height="wrap_content"
-        android:text="@string/popup.editor"
-        android:textStyle="bold"
         android:layout_below="@id/dialog_name"
-        android:layout_toEndOf="@+id/dialog_image"/>
+        android:layout_toEndOf="@+id/dialog_image"
+        android:text="@string/popup.editor"
+        android:textColor="#ff009900"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/dialog_numero"
@@ -40,19 +50,19 @@
         android:layout_toRightOf="@+id/dialog_image"
         android:text="@string/dialogNumero"
         android:textColor="#ff02a9ff"
-        android:textStyle="italic"/>
+        android:textStyle="italic" />
 
     <ImageView
         android:id="@+id/dialog_fini"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:textStyle="bold|italic"
-        android:textColor="#ff28ff5f"
-        android:src="@drawable/cross"
-        android:typeface="serif"
-        android:layout_alignTop="@id/dialog_numero"
         android:layout_alignParentEnd="true"
-        android:contentDescription="@string/popup.fini.description" />
+        android:layout_alignTop="@id/dialog_numero"
+        android:contentDescription="@string/popup.fini.description"
+        android:src="@drawable/cross"
+        android:textColor="#ff28ff5f"
+        android:textStyle="bold|italic"
+        android:typeface="serif" />
 
     <TextView
         android:id="@+id/dialog_manquant"
@@ -62,6 +72,6 @@
         android:layout_toRightOf="@+id/dialog_image"
         android:text="@string/dialogManquant"
         android:textColor="#ffff0e1c"
-        android:textStyle="italic"/>
+        android:textStyle="italic" />
 
-</RelativeLayout >
+</RelativeLayout>

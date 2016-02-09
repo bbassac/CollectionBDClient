@@ -10,11 +10,8 @@
     tools:context=".DisplayActivity">
 
     <include
-        layout="@layout/search_component"
         android:id="@+id/searchComponent"
-    />
-
-
+        layout="@layout/search_component" />
 
 
     <ListView

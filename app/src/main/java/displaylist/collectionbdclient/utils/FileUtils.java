@@ -25,11 +25,11 @@ public class FileUtils {
     private static String crlf = System.getProperty("line.separator");
     private static String directoryDownloads = Environment.DIRECTORY_DCIM;
 
-    public static  boolean saveContent(Activity activity,String content) {
-        return saveContentToFile(activity,content,offlineModeFile);
+    public static boolean saveContent(Activity activity, String content) {
+        return saveContentToFile(activity, content, offlineModeFile);
     }
 
-    public static boolean saveContentToFile(Activity activity,String content,String fileName) {
+    public static boolean saveContentToFile(Activity activity, String content, String fileName) {
         try {
             File f = new File(Environment.getExternalStoragePublicDirectory(
                     directoryDownloads), fileName);
@@ -40,7 +40,7 @@ public class FileUtils {
             out.close();
             return true;
         } catch (IOException e) {
-           ToastUtils.display(activity,e.getMessage());
+            ToastUtils.display(activity, e.getMessage());
             return false;
         }
     }
@@ -69,9 +69,9 @@ public class FileUtils {
         return sb.toString();
     }
 
-    public static String getBuildDate(Activity activity){
+    public static String getBuildDate(Activity activity) {
         String s = "";
-        try{
+        try {
             ApplicationInfo ai = activity.getPackageManager().getApplicationInfo(activity.getPackageName(), 0);
             ZipFile zf = new ZipFile(ai.sourceDir);
             ZipEntry ze = zf.getEntry("META-INF/MANIFEST.MF");
@@ -80,7 +80,7 @@ public class FileUtils {
             formatter.setTimeZone(TimeZone.getTimeZone("gmt"));
             s = formatter.format(new java.util.Date(time));
             zf.close();
-        }catch(Exception e){
+        } catch (Exception e) {
         }
         return s;
     }

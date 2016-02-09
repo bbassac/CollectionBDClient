@@ -10,63 +10,61 @@ import java.util.Map;
 
 public class Serie {
 
-	private Long id;
-	private String nom;
+    // and then "other" stuff:
+    protected Map<String, Object> other = new HashMap<String, Object>();
+    private Long id;
+    private String nom;
     private List<Bd> listPossede;
-
     private List<Bd> listManquante;
-
     private boolean fini;
     private String imageUrl;
     private String editeur;
 
-	// and then "other" stuff:
-	protected Map<String,Object> other = new HashMap<String, Object>();
-
     public Serie(Long id, String nom, boolean fini) {
         this.nom = nom;
         this.id = id;
-        this.fini=fini;
+        this.fini = fini;
     }
 
 
-	public String getImageUrl() {
-		return imageUrl;
-	}
+    // Must have no-argument constructor
+    public Serie() {
 
-	public void setImageUrl(String imageUrl) {
-		this.imageUrl = imageUrl;
-	}
+    }
 
-	public boolean isFini() {
-		return fini;
-	}
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public boolean isFini() {
+        return fini;
+    }
 
     public void setFini(boolean fini) {
-		this.fini = fini;
-	}
-	// Must have no-argument constructor
-	public Serie() {
+        this.fini = fini;
+    }
 
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
 
-	public String getNom() {
-		return nom;
-	}
+    public String getNom() {
+        return nom;
+    }
 
 
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
 
     public List<Bd> getListPossede() {
         return listPossede;
@@ -84,20 +82,20 @@ public class Serie {
         this.listManquante = listManquante;
     }
 
-	// "any getter" needed for serialization
-	@JsonAnyGetter
-	public Map<String,Object> any() {
-		return other;
-	}
+    // "any getter" needed for serialization
+    @JsonAnyGetter
+    public Map<String, Object> any() {
+        return other;
+    }
 
-	@JsonAnySetter
-	public void set(String name, Object value) {
-		other.put(name, value);
-	}
+    @JsonAnySetter
+    public void set(String name, Object value) {
+        other.put(name, value);
+    }
 
-	public Object get(String name) {
-		return other.get(name);
-	}
+    public Object get(String name) {
+        return other.get(name);
+    }
 
     public String getEditeur() {
         return editeur;

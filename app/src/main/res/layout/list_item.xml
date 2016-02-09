@@ -1,89 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <ImageView
+        android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageView"
-        android:src="@drawable/ic_launcher"
         android:layout_alignParentStart="true"
-        android:maxWidth="30dp"
+        android:contentDescription="@string/listitem.couverture.description"
         android:maxHeight="30dp"
-        android:contentDescription="@string/listitem.couverture.description" />
+        android:maxWidth="30dp"
+        android:src="@drawable/ic_launcher" />
 
     <TextView
         android:id="@+id/nom"
         android:layout_width="match_parent"
-        android:textColor="#ff000000"
         android:layout_height="wrap_content"
-        android:text="@string/listitem_nom"
-        android:textStyle="bold"
         android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/imageView"/>
+        android:layout_toEndOf="@+id/imageView"
+        android:text="@string/listitem_nom"
+        android:textColor="#ff000000"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/serie_counter"
         android:layout_width="wrap_content"
-        android:textColor="#ff000000"
         android:layout_height="wrap_content"
-        android:text="@string/listitem_counter"
-        android:textStyle="bold"
         android:layout_alignBaseline="@+id/editeur"
         android:layout_alignBottom="@+id/editeur"
-        android:layout_alignEnd="@+id/nom" />
+        android:layout_alignEnd="@+id/nom"
+        android:text="@string/listitem_counter"
+        android:textColor="#ff000000"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/editeur"
         android:layout_width="match_parent"
-        android:textColor="#ff009900"
         android:layout_height="wrap_content"
-        android:text="@string/listitem_editor"
-        android:textStyle="bold"
         android:layout_below="@id/nom"
-        android:layout_toEndOf="@+id/imageView"/>
+        android:layout_toEndOf="@+id/imageView"
+        android:text="@string/listitem_editor"
+        android:textColor="#ff009900"
+        android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/numero"
+        android:id="@+id/possede"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/editeur"
-        android:text="@string/listitem.numero"
-        android:textColor="#ff02a9ff"
-        android:textStyle="italic"
         android:layout_toRightOf="@+id/imageView"
         android:layout_toStartOf="@+id/fini"
-     />
+        android:text="@string/listitem.numero"
+        android:textColor="#ff02a9ff"
+        android:textStyle="italic" />
 
     <ImageView
         android:id="@+id/fini"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:textStyle="bold|italic"
-        android:textColor="#ff28ff5f"
-        android:text="@string/listitem.fini"
-        android:src="@drawable/cross"
-        android:typeface="serif"
-        android:layout_alignTop="@id/numero"
         android:layout_alignParentEnd="true"
-        android:contentDescription="@string/listitem.fini.description" />
+        android:layout_alignTop="@id/possede"
+        android:contentDescription="@string/listitem.fini.description"
+        android:src="@drawable/cross"
+        android:text="@string/listitem.fini"
+        android:textColor="#ff28ff5f"
+        android:textStyle="bold|italic"
+        android:typeface="serif" />
 
     <TextView
         android:id="@+id/manquant"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/possede"
         android:layout_toEndOf="@+id/imageView"
         android:text="@string/listitem.manquant"
         android:textColor="#ffff0e1c"
-        android:textStyle="italic"
-        android:layout_below="@+id/numero"/>
+        android:textStyle="italic" />
+
     <TextView
         android:id="@+id/bd_id"
         android:layout_width="1dp"
         android:layout_height="1dp"
-        android:layout_below="@+id/manquant"/>
+        android:layout_below="@+id/manquant" />
 
 
-</RelativeLayout >
+</RelativeLayout>

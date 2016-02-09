@@ -12,9 +12,10 @@ public class Collection {
     private Long id;
 
     private List<Serie> listeSerie;
-	public Collection() {
-		listeSerie = new ArrayList<Serie>();
-	}
+
+    public Collection() {
+        listeSerie = new ArrayList<Serie>();
+    }
 
     public Long getId() {
         return id;
@@ -24,28 +25,27 @@ public class Collection {
         this.id = id;
     }
 
-	public List<Serie> getListeSerie() {
-		return listeSerie;
-	}
+    public List<Serie> getListeSerie() {
+        return listeSerie;
+    }
 
 
-	public void setListeSerie(List<Serie> listeSerie) {
-		this.listeSerie = listeSerie;
-	}
+    public void setListeSerie(List<Serie> listeSerie) {
+        this.listeSerie = listeSerie;
+    }
 
-	public void addBD(Serie serie) {
-		listeSerie.add(serie);
-	}
+    public void addBD(Serie serie) {
+        listeSerie.add(serie);
+    }
 
 
-
-	@Override
-	public String toString() {
-		ObjectMapper mapper = new ObjectMapper();
-		try {
-			return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(this);
-		} catch (IOException e) {
-			return "[]";
-		}
-	}
+    @Override
+    public String toString() {
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(this);
+        } catch (IOException e) {
+            return "[]";
+        }
+    }
 }

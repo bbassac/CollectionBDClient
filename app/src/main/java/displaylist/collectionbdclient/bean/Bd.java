@@ -9,10 +9,11 @@ public class Bd {
     private String numero;
     private String couvertureUrl;
 
-    public Bd(){}
+    public Bd() {
+    }
 
-    public Bd(Long id, String numero, String titre,String url){
-        this.id=id;
+    public Bd(Long id, String numero, String titre, String url) {
+        this.id = id;
         this.numero = numero;
         this.titre = titre;
         this.couvertureUrl = url;

@@ -13,8 +13,6 @@ import android.widget.ListView;
 import com.github.johnpersano.supertoasts.SuperActivityToast;
 import com.github.johnpersano.supertoasts.SuperToast;
 
-import java.util.Collections;
-
 import displaylist.collectionbdclient.R;
 import displaylist.collectionbdclient.adapter.ListBDAdapter;
 import displaylist.collectionbdclient.bean.Collection;
@@ -52,7 +50,7 @@ public class DisplayActivity extends Activity {
 
         switch (item.getItemId()) {
             case R.id.action_settings:
-                ToastUtils.display(DisplayActivity.this,FileUtils.getBuildDate(DisplayActivity.this));
+                ToastUtils.display(DisplayActivity.this, FileUtils.getBuildDate(DisplayActivity.this));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -62,6 +60,7 @@ public class DisplayActivity extends Activity {
 
     private class JSONParseTask extends AsyncTask<String, String, Collection> {
         SuperActivityToast superActivityToast;
+
         @Override
         protected void onPreExecute() {
             super.onPreExecute();

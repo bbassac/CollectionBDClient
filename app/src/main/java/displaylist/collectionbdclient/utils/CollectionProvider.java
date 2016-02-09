@@ -30,7 +30,7 @@ public class CollectionProvider {
         } catch (Exception e) {
             ToastUtils.display(activity, e.getMessage());
         }
-        if (stringJson != null  && listBD !=null) {
+        if (stringJson != null && listBD != null) {
             FileUtils.saveContent(activity, stringJson);
             //FOR TEST
             FileUtils.saveContentToFile(activity, listBD.toString(), FileUtils.UPDATED_JSON);

@@ -9,15 +9,15 @@ public class SimpleChronometer {
     private Long startTime;
     private Long duration;
 
-    public void start(){
+    public void start() {
         startTime = SystemClock.currentThreadTimeMillis();
     }
 
-    public void stop(){
-        duration = SystemClock.currentThreadTimeMillis()-startTime;
+    public void stop() {
+        duration = SystemClock.currentThreadTimeMillis() - startTime;
     }
 
-    public Long getDuration(){
+    public Long getDuration() {
         return duration;
     }
 }
