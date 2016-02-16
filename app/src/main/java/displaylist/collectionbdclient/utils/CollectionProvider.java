@@ -47,7 +47,9 @@ public class CollectionProvider {
             String json;
             // defaultHttpClient
             try {
-                json = HttpRequest.get(url).body();
+
+                HttpRequest httpRequest = HttpRequest.get(url);
+                json = httpRequest.body();
 
                 if (json != null && json.contains("listeSerie")) {
                     FileUtils.saveContent(activity, json);
