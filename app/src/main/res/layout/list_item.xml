@@ -21,7 +21,7 @@
         android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/imageView"
         android:text="@string/listitem_nom"
-        android:textColor="#ff000000"
+        android:textColor="#ffffff"
         android:textStyle="bold" />
 
     <TextView
@@ -32,7 +32,7 @@
         android:layout_alignBottom="@+id/editeur"
         android:layout_alignEnd="@+id/nom"
         android:text="@string/listitem_counter"
-        android:textColor="#ff000000"
+        android:textColor="#fdfdfd"
         android:textStyle="bold" />
 
     <TextView

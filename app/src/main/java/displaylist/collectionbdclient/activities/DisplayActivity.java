@@ -1,13 +1,19 @@
 package displaylist.collectionbdclient.activities;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import com.github.johnpersano.supertoasts.SuperActivityToast;
@@ -24,6 +30,7 @@ import displaylist.collectionbdclient.utils.ToastUtils;
 
 public class DisplayActivity extends Activity {
 
+    private static final int TEXT_ID = 0;
     ListView list;
     Collection listBD;
     CustomEditText inputSearch;
@@ -34,7 +41,17 @@ public class DisplayActivity extends Activity {
 
         setContentView(R.layout.activity_display);
         new JSONParseTask().execute();
+        createPreferenceIfNotExists();
+    }
 
+    private void createPreferenceIfNotExists() {
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(DisplayActivity.this);
+        String url = settings.getString("collectionServerUrl",null);
+        if (url == null){
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putString("collectionServerUrl","http://lioncorps.free.fr/listing");
+            editor.apply();
+        }
     }
 
     @Override
@@ -52,11 +69,59 @@ public class DisplayActivity extends Activity {
             case R.id.action_settings:
                 ToastUtils.display(DisplayActivity.this, FileUtils.getBuildDate(DisplayActivity.this));
                 return true;
+            case R.id.menu_settings:
+                createExampleDialog(DisplayActivity.this).show();
+                return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }
 
     }
+
+    /**
+     * Create and return an example alert dialog with an edit text box.
+     */
+    private Dialog createExampleDialog(final Activity activity) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+        builder.setTitle("Settings");
+        builder.setMessage("Server URL:");
+
+        // Use an EditText view to get user input.
+        final EditText input = new EditText(activity);
+        input.setId(TEXT_ID);
+        builder.setView(input);
+
+        final SharedPreferences defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
+        String url = defaultSharedPreferences.getString("collectionServerUrl",null);
+        input.setText(url);
+
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int whichButton) {
+                String value = input.getText().toString();
+                SharedPreferences.Editor editor = defaultSharedPreferences.edit();
+                editor.putString("collectionServerUrl",value);
+                editor.apply();
+                return;
+            }
+        });
+
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                return;
+            }
+        });
+
+        return builder.create();
+    }
+
+    
 
     private class JSONParseTask extends AsyncTask<String, String, Collection> {
         SuperActivityToast superActivityToast;

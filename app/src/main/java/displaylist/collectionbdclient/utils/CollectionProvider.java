@@ -1,6 +1,8 @@
 package displaylist.collectionbdclient.utils;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
 import com.github.kevinsawicki.http.HttpRequest;
 
@@ -23,7 +25,8 @@ public class CollectionProvider {
         String stringJson = null;
         Collection listBD = null;
         try {
-            stringJson = WSProvider.getJSONFromUrl(activity, activity.getString(R.string.url));
+            String urlServer =  PreferenceManager.getDefaultSharedPreferences(activity).getString("collectionServerUrl",null);
+            stringJson = WSProvider.getJSONFromUrl(activity,urlServer);
             JsonParser jp = new JsonFactory().createJsonParser(new ByteArrayInputStream(stringJson.getBytes("UTF-8")));
             //Jacksonize to bean
             listBD = new ObjectMapper().readValue(jp, Collection.class);
