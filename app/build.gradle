@@ -8,16 +8,14 @@ android {
         incremental = true
         javaMaxHeapSize "4g"
     }
-
     defaultConfig {
         applicationId "displaylist.collectionbdclient"
-        minSdkVersion 17
+        minSdkVersion 19
         targetSdkVersion 19
         versionCode 1
         versionName "1.0"
         multiDexEnabled false
     }
-
     signingConfigs {
         release {
             storeFile file("AndroidKeystore.jks")
@@ -26,19 +24,20 @@ android {
             keyPassword "000000"
         }
     }
-
     buildTypes {
         release {
             minifyEnabled true
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
+            proguardFile 'D:/workspace/Workspace-perso/CollectionBDClient/app/proguard-rules.pro'
         }
         debug {
             minifyEnabled false
             shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.debug
+            proguardFile 'D:/workspace/Workspace-perso/CollectionBDClient/app/proguard-rules.pro'
         }
     }
     packagingOptions {
@@ -46,8 +45,8 @@ android {
         exclude 'META-INF/LICENSE'
         exclude 'META-INF/NOTICE'
     }
-
-
+    productFlavors {
+    }
 }
 
 dependencies {

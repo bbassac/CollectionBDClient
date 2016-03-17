@@ -1,7 +1,6 @@
 package displaylist.collectionbdclient.utils;
 
 import java.util.Collections;
-import java.util.Comparator;
 
 import displaylist.collectionbdclient.R;
 import displaylist.collectionbdclient.bean.Bd;

@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -40,16 +41,18 @@ public class DisplayActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_display);
-        new JSONParseTask().execute();
         createPreferenceIfNotExists();
+        new JSONParseTask().execute();
     }
 
     private void createPreferenceIfNotExists() {
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(DisplayActivity.this);
-        String url = settings.getString("collectionServerUrl",null);
-        if (url == null){
+        String url = settings.getString("collectionServerUrl", null);
+        Log.i("","Preference loaded : " + url);
+        if (url == null) {
             SharedPreferences.Editor editor = settings.edit();
-            editor.putString("collectionServerUrl","http://lioncorps.free.fr/listing");
+            editor.putString("collectionServerUrl", "http://lioncorps.free.fr/listing");
+            Log.i("","created default url: ");
             editor.apply();
         }
     }
@@ -73,6 +76,9 @@ public class DisplayActivity extends Activity {
                 createExampleDialog(DisplayActivity.this).show();
                 return true;
 
+            case R.id.menu_refresh:
+                new JSONParseTask().execute();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -94,7 +100,7 @@ public class DisplayActivity extends Activity {
         builder.setView(input);
 
         final SharedPreferences defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
-        String url = defaultSharedPreferences.getString("collectionServerUrl",null);
+        String url = defaultSharedPreferences.getString("collectionServerUrl", null);
         input.setText(url);
 
         builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
@@ -103,7 +109,7 @@ public class DisplayActivity extends Activity {
             public void onClick(DialogInterface dialog, int whichButton) {
                 String value = input.getText().toString();
                 SharedPreferences.Editor editor = defaultSharedPreferences.edit();
-                editor.putString("collectionServerUrl",value);
+                editor.putString("collectionServerUrl", value);
                 editor.apply();
                 return;
             }
@@ -121,7 +127,6 @@ public class DisplayActivity extends Activity {
         return builder.create();
     }
 
-    
 
     private class JSONParseTask extends AsyncTask<String, String, Collection> {
         SuperActivityToast superActivityToast;

@@ -1,8 +1,8 @@
 package displaylist.collectionbdclient.utils;
 
 import android.app.Activity;
-import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.util.Log;
 
 import com.github.kevinsawicki.http.HttpRequest;
 
@@ -12,7 +12,6 @@ import org.codehaus.jackson.map.ObjectMapper;
 
 import java.io.ByteArrayInputStream;
 
-import displaylist.collectionbdclient.R;
 import displaylist.collectionbdclient.bean.Collection;
 
 /**
@@ -25,8 +24,9 @@ public class CollectionProvider {
         String stringJson = null;
         Collection listBD = null;
         try {
-            String urlServer =  PreferenceManager.getDefaultSharedPreferences(activity).getString("collectionServerUrl",null);
-            stringJson = WSProvider.getJSONFromUrl(activity,urlServer);
+            String urlServer = PreferenceManager.getDefaultSharedPreferences(activity).getString("collectionServerUrl", null);
+            Log.i("","Loaded preference for cellection :" + urlServer);
+            stringJson = WSProvider.getJSONFromUrl(activity, urlServer);
             JsonParser jp = new JsonFactory().createJsonParser(new ByteArrayInputStream(stringJson.getBytes("UTF-8")));
             //Jacksonize to bean
             listBD = new ObjectMapper().readValue(jp, Collection.class);
