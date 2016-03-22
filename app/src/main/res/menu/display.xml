@@ -2,24 +2,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".DisplayActivity">
     <item
+        android:id="@+id/menu_refresh"
+        android:orderInCategory="99"
+        android:showAsAction="ifRoom"
+        android:icon="@drawable/icon_dark_refresh"
+        android:title="Refresh" />
+    <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
-        android:showAsAction=""
+        android:showAsAction="ifRoom"
         android:title="@string/action_settings" />
     <item
         android:id="@+id/menu_settings"
         android:orderInCategory="101"
-        android:showAsAction=""
+        android:showAsAction="ifRoom"
         android:title="Settings..." />
-    <item
-        android:id="@+id/menu_refresh"
-        android:orderInCategory="102"
-        android:showAsAction=""
-        android:title="Refresh" />
     <item
         android:id="@+id/menu_quit"
         android:orderInCategory="103"
-        android:showAsAction=""
+        android:showAsAction="ifRoom"
         android:title="Quit" />
 
 </menu>
