@@ -77,7 +77,7 @@ public class FileUtils {
             ZipEntry ze = zf.getEntry("META-INF/MANIFEST.MF");
             long time = ze.getTime();
             SimpleDateFormat formatter = (SimpleDateFormat) SimpleDateFormat.getInstance();
-            formatter.setTimeZone(TimeZone.getTimeZone("gmt"));
+            formatter.setTimeZone(TimeZone.getDefault());
             s = formatter.format(new java.util.Date(time));
             zf.close();
         } catch (Exception e) {

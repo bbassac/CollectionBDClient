@@ -79,10 +79,7 @@ public class ListBDAdapter extends BaseAdapter implements Filterable {
 
         imageview.setImageBitmap(null);
 
-        String assetUrl = "file:///android_asset/img/" + serie.getNom() + ".jpg";
-        if (!AssetUtils.instance(displayActivity).checkAssetExists(assetUrl)) {
-            assetUrl = serie.getImageUrl();
-        }
+        String assetUrl = SerieUtils.getSerieImageUrl(displayActivity,serie);
         Picasso.with(context).load(assetUrl).resize(100, 120).into(imageview);
 
 

@@ -1,5 +1,7 @@
 package displaylist.collectionbdclient.utils;
 
+import android.app.Activity;
+
 import java.util.Collections;
 
 import displaylist.collectionbdclient.R;
@@ -49,6 +51,14 @@ public class SerieUtils {
 
     public static String getNbTotalBd(Serie serie) {
         return String.valueOf(serie.getListPossede() == null || serie.getListManquante() == null ? "--" : serie.getListManquante().size() + serie.getListPossede().size());
+    }
+
+    public static String getSerieImageUrl(Activity activity, Serie serie){
+        String assetUrl = "file:///android_asset/img/" + serie.getNom() + ".jpg";
+        if (!AssetUtils.instance(activity).checkAssetExists(assetUrl)) {
+            assetUrl = serie.getImageUrl();
+        }
+        return assetUrl;
     }
 
 }

@@ -16,4 +16,10 @@
         android:orderInCategory="102"
         android:showAsAction=""
         android:title="Refresh" />
+    <item
+        android:id="@+id/menu_quit"
+        android:orderInCategory="103"
+        android:showAsAction=""
+        android:title="Quit" />
+
 </menu>

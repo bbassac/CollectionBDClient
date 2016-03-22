@@ -12,4 +12,8 @@ public class ToastUtils {
         SuperActivityToast.create(activity, content, SuperToast.Duration.LONG, Style.getStyle(Style.GREEN, SuperToast.Animations.FLYIN)).show();
     }
 
+    public static void display(Activity activity, String content,int duration) {
+        SuperActivityToast.create(activity, content, duration, Style.getStyle(Style.GREEN, SuperToast.Animations.FLYIN)).show();
+    }
+
 }

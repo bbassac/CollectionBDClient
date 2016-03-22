@@ -66,6 +66,12 @@ public class DisplayActivity extends Activity {
     }
 
     @Override
+    public void onBackPressed()
+    {
+        ToastUtils.display(DisplayActivity.this, "Back button disabled",SuperToast.Duration.SHORT);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
@@ -79,6 +85,10 @@ public class DisplayActivity extends Activity {
             case R.id.menu_refresh:
                 new JSONParseTask().execute();
                 return true;
+            case R.id.menu_quit:
+                DisplayActivity.this.finish();
+                return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }
