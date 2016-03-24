@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Collection Manager</string>
+    <string name="app_name">Bd</string>
     <string name="action_settings">Version</string>
     <string name="details">Details</string>
     <string name="filterToolTip">Type your text to filter</string>

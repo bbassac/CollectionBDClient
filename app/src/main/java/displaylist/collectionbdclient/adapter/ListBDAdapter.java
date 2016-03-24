@@ -20,7 +20,6 @@ import displaylist.collectionbdclient.activities.DisplayActivity;
 import displaylist.collectionbdclient.bean.Collection;
 import displaylist.collectionbdclient.bean.Serie;
 import displaylist.collectionbdclient.components.MyOnClickListener;
-import displaylist.collectionbdclient.utils.AssetUtils;
 import displaylist.collectionbdclient.utils.SerieUtils;
 
 public class ListBDAdapter extends BaseAdapter implements Filterable {
@@ -61,7 +60,7 @@ public class ListBDAdapter extends BaseAdapter implements Filterable {
         Serie serie = filteredCollection.getListeSerie().get(index);
         if (view == null) {
             LayoutInflater inflater = LayoutInflater.from(context);
-            view = inflater.inflate(R.layout.list_item, null);
+            view = inflater.inflate(R.layout.display_list_item, null);
             view.setClickable(true);
             view.setOnClickListener(new MyOnClickListener(context, displayActivity, filteredCollection));
         }

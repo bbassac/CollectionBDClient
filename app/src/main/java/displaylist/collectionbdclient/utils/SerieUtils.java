@@ -1,12 +1,16 @@
 package displaylist.collectionbdclient.utils;
 
 import android.app.Activity;
+import android.text.TextUtils;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 import displaylist.collectionbdclient.R;
 import displaylist.collectionbdclient.bean.Bd;
 import displaylist.collectionbdclient.bean.Collection;
+import displaylist.collectionbdclient.bean.ManageListItem;
 import displaylist.collectionbdclient.bean.Serie;
 
 public class SerieUtils {
@@ -59,6 +63,33 @@ public class SerieUtils {
             assetUrl = serie.getImageUrl();
         }
         return assetUrl;
+    }
+
+    public static List<ManageListItem> convertCollection(Collection listeBD) {
+        List<ManageListItem> toReturn = new ArrayList<>();
+        for(Serie serie : listeBD.getListeSerie()){
+            if (serie.getListManquante()!= null && serie.getListManquante().size()>0){
+                for (Bd bd : serie.getListManquante()) {
+                    ManageListItem item = new ManageListItem();
+                    item.setSerieId(serie.getId());
+                    item.setSerieName(serie.getNom());
+                    item.setEditeur(serie.getEditeur());
+                    item.setBdid(bd.getId());
+                    if (!TextUtils.isEmpty(bd.getCouvertureUrl()))
+                    {
+                        item.setUrlImage(bd.getCouvertureUrl());
+                    }else {
+                        item.setUrlImage(serie.getImageUrl());
+                    }
+
+                    item.setTitre(bd.getTitre());
+                    item.setNumero(bd.getNumero());
+                    toReturn.add(item);
+                }
+
+            }
+        }
+        return toReturn;
     }
 
 }

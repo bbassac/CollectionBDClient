@@ -45,7 +45,7 @@ public class CustomEditText extends EditText {
         // Set bounds of the Clear button so it will look ok
         imgCloseButton.setBounds(0, 0, imgCloseButton.getIntrinsicWidth(), imgCloseButton.getIntrinsicHeight());
 
-        // There may be initial text in the field, so we may need to display the  button
+        // There may be initial text in the field, so we may need to menu the  button
         handleClearButton();
 
         //if the Close image is displayed and the user remove his finger from the button, clear it. Otherwise do nothing

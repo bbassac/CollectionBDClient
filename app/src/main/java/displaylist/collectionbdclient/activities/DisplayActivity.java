@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -61,7 +62,7 @@ public class DisplayActivity extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
 
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.display, menu);
+        inflater.inflate(R.menu.menu, menu);
         return true;
     }
 
@@ -89,6 +90,10 @@ public class DisplayActivity extends Activity {
                 DisplayActivity.this.finish();
                 return true;
 
+            case R.id.menu_manage:
+                Intent intent=new Intent(DisplayActivity.this,ManageActivity.class);
+                startActivity(intent);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
