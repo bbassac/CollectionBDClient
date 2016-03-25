@@ -9,10 +9,15 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="displaylist.collectionbdclient.activities.ManageActivity">
 
+    <include
+        android:id="@+id/manage_searchComponent"
+        layout="@layout/search_component" />
+
     <ListView
-        android:id="@+id/list"
+        android:id="@+id/manage_list"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="0px" />
+        android:layout_below="@id/manage_searchComponent"
+        android:layout_marginTop="150px" />
 
 </RelativeLayout>

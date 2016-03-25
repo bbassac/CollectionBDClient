@@ -1,20 +1,22 @@
 package displaylist.collectionbdclient.adapter;
 
 
-
 import android.app.Activity;
 import android.content.Context;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import displaylist.collectionbdclient.R;
 import displaylist.collectionbdclient.bean.Collection;
@@ -23,41 +25,43 @@ import displaylist.collectionbdclient.utils.MyOnLongClickListener;
 import displaylist.collectionbdclient.utils.SerieUtils;
 
 
-public class ManageBDAdapter extends BaseAdapter {
-    Collection collection = null; //GET FROM JSON
-    List<ManageListItem> listItems = null;
+public class ManageBDAdapter extends BaseAdapter implements Filterable {
+    List<ManageListItem> unfilteredlistItems = null;
+    List<ManageListItem> filteredlistItems = null;
     Activity activity;
-    ManageListItem item;
+
+    BDFilter filter;
     private Context context;
 
     public ManageBDAdapter(Context exContext, Collection listeBD, Activity displayActivity) {
         super();
         context = exContext;
-        collection = listeBD;
-        listItems = SerieUtils.convertCollection(listeBD);
+        unfilteredlistItems = SerieUtils.convertCollection(listeBD);
+        filteredlistItems = SerieUtils.convertCollection(listeBD);
         this.activity = displayActivity;
+        getFilter();
     }
 
     @Override
     public int getCount() {
-        return listItems.size();
+        return filteredlistItems.size();
     }
 
     @Override
     public ManageListItem getItem(int arg0) {
-        return listItems.get(arg0);
+        return filteredlistItems.get(arg0);
     }
 
     @Override
     public long getItemId(int arg0) {
-        return listItems.get(arg0).getBdid();
+        return filteredlistItems.get(arg0).getBdid();
     }
 
 
     @Override
     public View getView(int index, View view, ViewGroup viewGroup) {
 
-        item = listItems.get(index);
+        ManageListItem item = filteredlistItems.get(index);
         if (view == null) {
             LayoutInflater inflater = LayoutInflater.from(context);
             view = inflater.inflate(R.layout.manage_list_item, null);
@@ -70,7 +74,8 @@ public class ManageBDAdapter extends BaseAdapter {
         ((TextView) view.findViewById(R.id.manquant_bd_id)).setText(String.valueOf(item.getBdid()));
         ((TextView) view.findViewById(R.id.manquant_serie_id)).setText(String.valueOf(item.getSerieId()));
         ((TextView) view.findViewById(R.id.manquant_editeur)).setText(item.getEditeur());
-        view.findViewById(R.id.manquant_button).setOnLongClickListener(new MyOnLongClickListener(ManageBDAdapter.this, activity,collection,view,listItems,index));
+        ((TextView) activity.findViewById(R.id.counter)).setText("(" + filteredlistItems.size() + ")");
+        view.findViewById(R.id.manquant_button).setOnLongClickListener(new MyOnLongClickListener(ManageBDAdapter.this, activity,view, filteredlistItems,index));
 
         imageview.setImageBitmap(null);
 
@@ -82,4 +87,55 @@ public class ManageBDAdapter extends BaseAdapter {
         return view;
     }
 
+    @Override
+    public Filter getFilter() {
+        if (filter == null) {
+            filter = new BDFilter();
+        }
+        return filter;
+    }
+
+    public class BDFilter extends Filter {
+
+        @Override
+        public FilterResults performFiltering(CharSequence constraint) {
+            FilterResults result = new FilterResults();
+            if (constraint == null || constraint.length() == 0) {
+
+                result = null;
+            } else {
+                List<ManageListItem> filteredList = new ArrayList<>();
+                String filtre = constraint.toString().toLowerCase(Locale.FRANCE);
+                for (ManageListItem item : unfilteredlistItems) {
+
+                    if (item.getTitre().toLowerCase(Locale.FRANCE).contains(filtre) ||
+                            item.getSerieName().toLowerCase(Locale.FRANCE).contains(filtre)||
+                            item.getEditeur().toLowerCase(Locale.FRANCE).contains(filtre)) {
+                        filteredList.add(item);
+                    }
+                }
+                result.values = filteredList;
+                result.count = filteredList.size();
+            }
+
+            return result;
+        }
+
+        @Override
+        public void publishResults(CharSequence constraint, FilterResults results) {
+            if (results == null) {
+                filteredlistItems = unfilteredlistItems;
+                notifyDataSetChanged();
+            } else if (results.count == 0) {
+                filteredlistItems = new ArrayList<>();
+                notifyDataSetChanged();
+            } else {
+                filteredlistItems = (List<ManageListItem>) results.values;
+                notifyDataSetChanged();
+            }
+        }
+
+
+    }
 }
+

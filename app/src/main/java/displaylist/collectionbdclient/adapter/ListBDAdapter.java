@@ -100,19 +100,19 @@ public class ListBDAdapter extends BaseAdapter implements Filterable {
 
         @Override
         public FilterResults performFiltering(CharSequence constraint) {
-
             FilterResults result = new FilterResults();
             if (constraint == null || constraint.length() == 0) {
 
                 result = null;
             } else {
                 Collection filteredList = new Collection();
+                String filtre = constraint.toString().toLowerCase(Locale.FRANCE);
                 for (Serie serie : unfilteredCollection.getListeSerie()) {
 
-                    if (serie.getNom().toLowerCase(Locale.FRANCE).contains(constraint) ||
-                            SerieUtils.getStringManquant(serie).toLowerCase(Locale.FRANCE).contains(constraint) ||
-                            SerieUtils.getStringPossede(serie).toLowerCase(Locale.FRANCE).contains(constraint) ||
-                            serie.getEditeur().toLowerCase(Locale.FRANCE).contains(constraint)) {
+                    if (serie.getNom().toLowerCase(Locale.FRANCE).contains(filtre) ||
+                            SerieUtils.getStringManquant(serie).toLowerCase(Locale.FRANCE).contains(filtre) ||
+                            SerieUtils.getStringPossede(serie).toLowerCase(Locale.FRANCE).contains(filtre) ||
+                            serie.getEditeur().toLowerCase(Locale.FRANCE).contains(filtre)) {
                         filteredList.addBD(serie);
                     }
                 }

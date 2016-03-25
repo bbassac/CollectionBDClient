@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -36,7 +37,7 @@ public class DisplayActivity extends Activity {
     ListView list;
     Collection listBD;
     CustomEditText inputSearch;
-
+    boolean doubleBackToExitPressedOnce = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,11 +68,22 @@ public class DisplayActivity extends Activity {
     }
 
     @Override
-    public void onBackPressed()
-    {
-        ToastUtils.display(DisplayActivity.this, "Back button disabled",SuperToast.Duration.SHORT);
-    }
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            DisplayActivity.this.finish();
+        }
 
+        this.doubleBackToExitPressedOnce = true;
+        ToastUtils.display(DisplayActivity.this, "Tap Back again to exit");
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce=false;
+            }
+        }, 2000);
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 

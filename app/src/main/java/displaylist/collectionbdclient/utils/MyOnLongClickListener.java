@@ -21,13 +21,11 @@ public class MyOnLongClickListener implements View.OnLongClickListener {
     private final List<ManageListItem> listItems;
     private final int index;
     private Activity activity;
-    private Collection collection;
     private View itemView;
     private ManageBDAdapter adapter;
 
-    public MyOnLongClickListener(ManageBDAdapter adapter, Activity activity, Collection collection, View view, List<ManageListItem> listItems, int index) {
+    public MyOnLongClickListener(ManageBDAdapter adapter, Activity activity,View view, List<ManageListItem> listItems, int index) {
         this.activity = activity;
-        this.collection = collection;
         this.itemView = view;
         this.adapter=adapter;
         this.listItems= listItems;
