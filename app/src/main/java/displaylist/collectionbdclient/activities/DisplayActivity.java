@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.StrictMode;
 import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -45,6 +46,8 @@ public class DisplayActivity extends Activity {
         setContentView(R.layout.activity_display);
         createPreferenceIfNotExists();
         new JSONParseTask().execute();
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+		StrictMode.setThreadPolicy(policy);
     }
 
     private void createPreferenceIfNotExists() {
@@ -53,7 +56,7 @@ public class DisplayActivity extends Activity {
         Log.i("","Preference loaded : " + url);
         if (url == null) {
             SharedPreferences.Editor editor = settings.edit();
-            editor.putString("collectionServerUrl", "http://lioncorps.free.fr/listing");
+            editor.putString("collectionServerUrl", "http://92.95.240.3:8080/collectionbdserver/rest");
             Log.i("","created default url: ");
             editor.apply();
         }
@@ -183,7 +186,6 @@ public class DisplayActivity extends Activity {
         protected void onPostExecute(Collection json) {
 
             superActivityToast.dismiss();
-            ToastUtils.display(DisplayActivity.this, "Data Loaded");
             try {
                 final ListBDAdapter adapter = new ListBDAdapter(getApplicationContext(), listBD, DisplayActivity.this);
                 list = (ListView) findViewById(R.id.list);

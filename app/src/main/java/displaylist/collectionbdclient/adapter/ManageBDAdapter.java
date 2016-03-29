@@ -19,10 +19,8 @@ import java.util.List;
 import java.util.Locale;
 
 import displaylist.collectionbdclient.R;
-import displaylist.collectionbdclient.bean.Collection;
 import displaylist.collectionbdclient.bean.ManageListItem;
 import displaylist.collectionbdclient.utils.MyOnLongClickListener;
-import displaylist.collectionbdclient.utils.SerieUtils;
 
 
 public class ManageBDAdapter extends BaseAdapter implements Filterable {
@@ -33,11 +31,11 @@ public class ManageBDAdapter extends BaseAdapter implements Filterable {
     BDFilter filter;
     private Context context;
 
-    public ManageBDAdapter(Context exContext, Collection listeBD, Activity displayActivity) {
+    public ManageBDAdapter(Context exContext, List<ManageListItem> listeBD, Activity displayActivity) {
         super();
         context = exContext;
-        unfilteredlistItems = SerieUtils.convertCollection(listeBD);
-        filteredlistItems = SerieUtils.convertCollection(listeBD);
+        unfilteredlistItems = listeBD;
+        filteredlistItems = listeBD;
         this.activity = displayActivity;
         getFilter();
     }

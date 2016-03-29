@@ -8,11 +8,13 @@ import android.text.TextWatcher;
 import android.widget.ListView;
 
 import com.github.johnpersano.supertoasts.SuperActivityToast;
-import com.github.johnpersano.supertoasts.SuperToast;
+
+import java.util.List;
 
 import displaylist.collectionbdclient.R;
 import displaylist.collectionbdclient.adapter.ManageBDAdapter;
 import displaylist.collectionbdclient.bean.Collection;
+import displaylist.collectionbdclient.bean.ManageListItem;
 import displaylist.collectionbdclient.components.ClearEventClick;
 import displaylist.collectionbdclient.components.CustomEditText;
 import displaylist.collectionbdclient.utils.CollectionProvider;
@@ -20,7 +22,7 @@ import displaylist.collectionbdclient.utils.ToastUtils;
 
 public class ManageActivity extends Activity {
 
-    Collection listBD;
+    List<ManageListItem> listBDManquantes;
     CustomEditText inputSearch;
     ListView listView;
 
@@ -37,7 +39,7 @@ public class ManageActivity extends Activity {
         finish();
     }
 
-    private class JSONParseTask extends AsyncTask<String, String, Collection> {
+    private class JSONParseTask extends AsyncTask<String, String, List<ManageListItem>> {
         SuperActivityToast superActivityToast;
 
         @Override
@@ -47,16 +49,15 @@ public class ManageActivity extends Activity {
         }
 
         @Override
-        protected Collection doInBackground(String... args) {
-            listBD = CollectionProvider.getEntireCollection(ManageActivity.this);
-            return listBD;
+        protected List<ManageListItem> doInBackground(String... args) {
+            listBDManquantes = CollectionProvider.getListManquante(ManageActivity.this);
+            return listBDManquantes;
         }
 
         @Override
-        protected void onPostExecute(Collection json) {
+        protected void onPostExecute(List<ManageListItem> json) {
             superActivityToast.dismiss();
-            ToastUtils.display(ManageActivity.this, "Data Loaded");
-            final ManageBDAdapter adapter = new ManageBDAdapter(getApplicationContext(), listBD, ManageActivity.this);
+            final ManageBDAdapter adapter = new ManageBDAdapter(getApplicationContext(), listBDManquantes, ManageActivity.this);
             listView = (ListView) findViewById(R.id.manage_list);
             listView.setAdapter(adapter);
             inputSearch = (CustomEditText) findViewById(R.id.search);

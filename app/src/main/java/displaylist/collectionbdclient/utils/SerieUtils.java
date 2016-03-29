@@ -65,31 +65,4 @@ public class SerieUtils {
         return assetUrl;
     }
 
-    public static List<ManageListItem> convertCollection(Collection listeBD) {
-        List<ManageListItem> toReturn = new ArrayList<>();
-        for(Serie serie : listeBD.getListeSerie()){
-            if (serie.getListManquante()!= null && serie.getListManquante().size()>0){
-                for (Bd bd : serie.getListManquante()) {
-                    ManageListItem item = new ManageListItem();
-                    item.setSerieId(serie.getId());
-                    item.setSerieName(serie.getNom());
-                    item.setEditeur(serie.getEditeur());
-                    item.setBdid(bd.getId());
-                    if (!TextUtils.isEmpty(bd.getCouvertureUrl()))
-                    {
-                        item.setUrlImage(bd.getCouvertureUrl());
-                    }else {
-                        item.setUrlImage(serie.getImageUrl());
-                    }
-
-                    item.setTitre(bd.getTitre());
-                    item.setNumero(bd.getNumero());
-                    toReturn.add(item);
-                }
-
-            }
-        }
-        return toReturn;
-    }
-
 }

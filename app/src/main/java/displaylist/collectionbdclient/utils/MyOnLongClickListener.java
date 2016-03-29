@@ -38,6 +38,7 @@ public class MyOnLongClickListener implements View.OnLongClickListener {
         Long bd_id = Long.valueOf(((TextView) itemView.findViewById(R.id.manquant_bd_id)).getText().toString());
         ToastUtils.display(activity,serie_ID+" "+bd_id+" "+((TextView) itemView.findViewById(R.id.manquant_nom)).getText(), SuperToast.Duration.VERY_SHORT);
         listItems.remove(index);
+        CollectionProvider.setBDAsPossede(activity,bd_id);
         adapter.notifyDataSetChanged();
         return true;
     }

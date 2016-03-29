@@ -11,60 +11,78 @@ import org.codehaus.jackson.JsonParser;
 import org.codehaus.jackson.map.ObjectMapper;
 
 import java.io.ByteArrayInputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import displaylist.collectionbdclient.bean.Collection;
+import displaylist.collectionbdclient.bean.ManageListItem;
 
 /**
  * Created by b.bassac on 29/12/2014.
  */
 public class CollectionProvider {
+    static SimpleChronometer chrono = new SimpleChronometer();
 
     static public Collection getEntireCollection(Activity activity) {
         // Getting JSON from URL
         String stringJson = null;
         Collection listBD = null;
         try {
-            String urlServer = PreferenceManager.getDefaultSharedPreferences(activity).getString("collectionServerUrl", null);
-            Log.i("","Loaded preference for cellection :" + urlServer);
-            stringJson = WSProvider.getJSONFromUrl(activity, urlServer);
+            chrono.start();
+            stringJson = WSProvider.getJSONFromUrl(getCollectionServerUrl(activity) +"/collection");
+            chrono.stop();
+            ToastUtils.display(activity,"Data loaded in "+chrono.getDuration()+" ms");
             JsonParser jp = new JsonFactory().createJsonParser(new ByteArrayInputStream(stringJson.getBytes("UTF-8")));
             //Jacksonize to bean
             listBD = new ObjectMapper().readValue(jp, Collection.class);
         } catch (Exception e) {
             ToastUtils.display(activity, e.getMessage());
         }
-        if (stringJson != null && listBD != null) {
-            FileUtils.saveContent(activity, stringJson);
-            //FOR TEST
-            FileUtils.saveContentToFile(activity, listBD.toString(), FileUtils.UPDATED_JSON);
-            return listBD;
-        } else {
-            return new Collection();
+       return listBD;
+    }
+
+    private static String getCollectionServerUrl(Activity activity) {
+        return PreferenceManager.getDefaultSharedPreferences(activity).getString("collectionServerUrl", null);
+    }
+
+    static public void setBDAsPossede(Activity activity,Long bdId){
+        WSProvider.postJSONFromUrl(getCollectionServerUrl(activity) +"/switch/"+bdId);
+    }
+
+    public static List<ManageListItem> getListManquante(Activity activity) {
+        // Getting JSON from URL
+        String stringJson = null;
+        List<ManageListItem> listBD = null;
+        try {
+            chrono.start();
+            stringJson = WSProvider.getJSONFromUrl(getCollectionServerUrl(activity) +"/bds/manquantes");
+            chrono.stop();
+            ToastUtils.display(activity,"Data loaded in "+chrono.getDuration()+" ms");
+            JsonParser jp = new JsonFactory().createJsonParser(new ByteArrayInputStream(stringJson.getBytes("UTF-8")));
+            //Jacksonize to bean
+
+            ObjectMapper objectMapper = new ObjectMapper();
+            listBD = objectMapper.readValue(jp, objectMapper.getTypeFactory().constructCollectionType(List.class, ManageListItem.class));
+        } catch (Exception e) {
+            ToastUtils.display(activity, e.getMessage());
+            listBD = new ArrayList<>();
         }
+       return listBD;
     }
 
     private static class WSProvider {
 
-
-        public static String getJSONFromUrl(Activity activity, String url) throws CustomException {
-            String json;
+        public static String getJSONFromUrl(String url) throws CustomException {
             // defaultHttpClient
-            try {
-
-                HttpRequest httpRequest = HttpRequest.get(url);
-                json = httpRequest.body();
-
-                if (json != null && json.contains("listeSerie")) {
-                    FileUtils.saveContent(activity, json);
-                }
-            } catch (HttpRequest.HttpRequestException e) {
-            }
-            json = FileUtils.loadFile(activity);
+            HttpRequest httpRequest = HttpRequest.get(url);
             // return JSON String
-            return json;
+            return httpRequest.body();
 
         }
 
 
+        public static void postJSONFromUrl(String s) {
+                HttpRequest.post(s).accept("text/plain; charset=utf-8").code();
+        }
     }
 }
