@@ -74,7 +74,7 @@ public class CollectionProvider {
 
         public static String getJSONFromUrl(String url) throws CustomException {
             // defaultHttpClient
-            HttpRequest httpRequest = HttpRequest.get(url);
+            HttpRequest httpRequest = HttpRequest.get(url).basic("bruno","bruno");
             // return JSON String
             return httpRequest.body();
 
@@ -82,7 +82,7 @@ public class CollectionProvider {
 
 
         public static void postJSONFromUrl(String s) {
-                HttpRequest.post(s).accept("text/plain; charset=utf-8").code();
+                HttpRequest.post(s).basic("bruno","bruno").accept("text/plain; charset=utf-8").code();
         }
     }
 }
