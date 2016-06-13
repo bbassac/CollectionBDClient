@@ -30,14 +30,14 @@ android {
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
-            proguardFile 'D:/workspace/Workspace-perso/CollectionBDClient/app/proguard-rules.pro'
+            proguardFile 'proguard-rules.pro'
         }
         debug {
             minifyEnabled false
             shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.debug
-            proguardFile 'D:/workspace/Workspace-perso/CollectionBDClient/app/proguard-rules.pro'
+            proguardFile 'proguard-rules.pro'
         }
     }
     packagingOptions {
