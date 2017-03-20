@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    style="@style/LayoutBackground">
 
     <ImageView
         android:id="@+id/manquant_imageView"
@@ -11,7 +12,8 @@
         android:layout_alignParentStart="true"
         android:maxHeight="30dp"
         android:maxWidth="30dp"
-        android:src="@drawable/address_book" />/>
+        android:src="@drawable/address_book"
+        android:contentDescription="@string/manquant_contentDescription" />
 
     <TextView
         android:id="@+id/manquant_serie"
@@ -19,9 +21,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/manquant_imageView"
-        android:text="serie"
-        android:textColor="#ffffff"
-        android:textStyle="bold" />
+        android:text="@string/manquant_serie"
+        style="@style/WhiteText" />
 
     <TextView
         android:id="@+id/manquant_editeur"
@@ -29,9 +30,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/manquant_serie"
         android:layout_toEndOf="@+id/manquant_imageView"
-        android:text="editeur"
-        android:textColor="#ff009900"
-        android:textStyle="bold" />
+        android:text="@string/manquant_editeur"
+        style="@style/GreenText" />
 
     <TextView
         android:id="@+id/manquant_nom"
@@ -39,27 +39,26 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/manquant_editeur"
         android:layout_toEndOf="@+id/manquant_imageView"
-        android:text="nom"
-        android:textColor="#ff02a9ff"
-        android:textStyle="bold" />
+        android:text="@string/manquant_nom"
+        style="@style/ManquanteText" />
 
     <TextView
         android:id="@+id/manquant_bd_id"
         android:layout_width="1dp"
         android:layout_height="1dp"
-        android:textColor="#ffffff"
-        android:text="1"
+        android:text="@string/manquant_bd_id"
         android:layout_below="@+id/manquant_nom"
-        android:layout_toEndOf="@+id/manquant_imageView" />
+        android:layout_toEndOf="@+id/manquant_imageView"
+        style="@style/WhiteText"/>
 
     <TextView
         android:id="@+id/manquant_serie_id"
         android:layout_width="1dp"
         android:layout_height="1dp"
-        android:textColor="#ffffff"
-        android:text="2"
+        android:text="@string/manquand_serie_id"
         android:layout_below="@+id/manquant_bd_id"
-        android:layout_toStartOf="@+id/manquant_bd_id" />
+        android:layout_toStartOf="@+id/manquant_bd_id"
+        style="@style/ManquanteText"/>
 
     <Button
         android:layout_width="30dp"
@@ -70,7 +69,7 @@
         android:layout_below="@+id/manquant_serie"
         android:layout_alignParentEnd="true"
         android:layout_above="@+id/manquant_nom"
-        android:layout_marginRight="10dp"/>
+        android:layout_marginEnd="10dp"/>
 
 
 </RelativeLayout>

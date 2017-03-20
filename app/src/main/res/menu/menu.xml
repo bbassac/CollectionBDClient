@@ -1,34 +1,29 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".DisplayActivity">
+    tools:context=".activities.DisplayActivity">
     <item
         android:id="@+id/menu_refresh"
-        android:orderInCategory="99"
         android:showAsAction="always"
         android:icon="@drawable/icon_dark_refresh"
-        android:title="Refresh" />
+        android:title="@string/menu_refresh" />
     <item
         android:id="@+id/menu_manage"
-        android:orderInCategory="101"
         android:showAsAction="always"
         android:icon="@drawable/icon_dark_edit"
-        android:title="Manage ..." />
+        android:title="@string/menu_manage" />
     <item
         android:id="@+id/menu_settings"
-        android:orderInCategory="102"
         android:showAsAction="ifRoom"
-        android:title="Settings..." />
+        android:title="@string/menu_settings" />
 
 
     <item
         android:id="@+id/action_settings"
-        android:orderInCategory="103"
         android:showAsAction="ifRoom"
         android:title="@string/action_settings" />
     <item
         android:id="@+id/menu_quit"
-        android:orderInCategory="104"
         android:showAsAction="ifRoom"
-        android:title="Quit" />
+        android:title="@string/menu_quit" />
 
 </menu>

@@ -42,7 +42,6 @@ public class DisplayActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_display);
         createPreferenceIfNotExists();
         new JSONParseTask().execute();
@@ -64,11 +63,11 @@ public class DisplayActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu, menu);
+        super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
+
 
     @Override
     public void onBackPressed() {

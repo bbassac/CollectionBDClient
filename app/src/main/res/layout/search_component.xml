@@ -8,7 +8,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/libelleFilter"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        style="@style/FilterText" />
 
 
     <TextView
@@ -18,15 +18,16 @@
         android:layout_marginTop="8dp"
         android:layout_below="@id/libelle"
         android:text="@string/blankCounter"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        style="@style/FilterText" />
 
     <displaylist.collectionbdclient.components.CustomEditText
         android:id="@+id/search"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignTop="@id/libelle"
-        android:layout_toRightOf="@+id/libelle"
-        android:layout_marginLeft="10dp"
+        android:layout_toEndOf="@+id/libelle"
+        android:layout_marginStart="10dp"
+        android:background="@color/white"
         android:hint="@string/filterToolTip" />
 
 </merge>
