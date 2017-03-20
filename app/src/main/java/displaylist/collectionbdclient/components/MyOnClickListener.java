@@ -39,8 +39,8 @@ public class MyOnClickListener implements View.OnClickListener {
             ((TextView) view.findViewById(R.id.manquant)).setText(SerieUtils.getStringManquant(serie));
             colapsedMap.put(s_id, false);
         } else {
-            ((TextView) view.findViewById(R.id.possede)).setText(null);
-            ((TextView) view.findViewById(R.id.manquant)).setText(null);
+            ((TextView) view.findViewById(R.id.possede)).setText("");
+            ((TextView) view.findViewById(R.id.manquant)).setText("");
             colapsedMap.put(s_id, true);
         }
     }

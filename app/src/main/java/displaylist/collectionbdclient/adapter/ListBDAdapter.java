@@ -80,7 +80,8 @@ public class ListBDAdapter extends BaseAdapter implements Filterable {
 
         String assetUrl = SerieUtils.getSerieImageUrl(displayActivity,serie);
         Picasso picasso = Picasso.with(context);
-        picasso.setIndicatorsEnabled(true);
+        //Debug
+        //picasso.setIndicatorsEnabled(true);
         picasso.load(assetUrl).resize(100, 120).into(imageview);
 
 
@@ -112,8 +113,8 @@ public class ListBDAdapter extends BaseAdapter implements Filterable {
                     if (serie.getNom().toLowerCase(Locale.FRANCE).contains(filtre) ||
                             SerieUtils.getStringManquant(serie).toLowerCase(Locale.FRANCE).contains(filtre) ||
                             SerieUtils.getStringPossede(serie).toLowerCase(Locale.FRANCE).contains(filtre) ||
-                            serie.getEditeur().toLowerCase(Locale.FRANCE).contains(filtre)) {
-                        filteredList.addBD(serie);
+                            SerieUtils.getStringEditeur(serie).toLowerCase(Locale.FRANCE).contains(filtre)) {
+                            filteredList.addBD(serie);
                     }
                 }
                 result.values = filteredList;

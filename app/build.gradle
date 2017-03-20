@@ -2,16 +2,15 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 19
-    buildToolsVersion '24.0.0 rc1'
+    buildToolsVersion '24.0.2'
     dexOptions {
         jumboMode true
-        incremental = true
         javaMaxHeapSize "4g"
     }
     defaultConfig {
         applicationId "displaylist.collectionbdclient"
         minSdkVersion 19
-        targetSdkVersion 19
+        targetSdkVersion 24
         versionCode 1
         versionName "1.0"
         multiDexEnabled false

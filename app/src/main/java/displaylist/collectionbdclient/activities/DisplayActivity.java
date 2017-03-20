@@ -56,7 +56,7 @@ public class DisplayActivity extends Activity {
         Log.i("","Preference loaded : " + url);
         if (url == null) {
             SharedPreferences.Editor editor = settings.edit();
-            editor.putString("collectionServerUrl", "http://92.95.240.3:8080/collectionbdserver/rest");
+            editor.putString("collectionServerUrl", "http://93.21.76.72:8080");
             Log.i("","created default url: ");
             editor.apply();
         }

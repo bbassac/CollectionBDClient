@@ -58,11 +58,10 @@ public class SerieUtils {
     }
 
     public static String getSerieImageUrl(Activity activity, Serie serie){
-        String assetUrl = "file:///android_asset/img/" + serie.getNom() + ".jpg";
-        if (!AssetUtils.instance(activity).checkAssetExists(assetUrl)) {
-            assetUrl = serie.getImageUrl();
-        }
-        return assetUrl;
+        return serie.getImageUrl();
     }
 
+    public static String getStringEditeur(Serie serie) {
+       return serie.getEditeur()==null ? "" : serie.getEditeur();
+    }
 }
