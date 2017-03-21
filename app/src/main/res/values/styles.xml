@@ -18,7 +18,7 @@
 
     <style name="GreenText">
         <item name="android:textColor">#ff009900</item>
-        <item name="android:textStyle">bold</item>
+        <item name="android:textStyle">italic</item>
     </style>
 
     <style name="PossedeText">

@@ -34,20 +34,20 @@
         android:id="@+id/editeur"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/nom"
-        android:layout_toEndOf="@+id/imageView"
         android:text="@string/listitem_editor"
-        style="@style/GreenText" />
+        style="@style/GreenText"
+        android:layout_marginTop="18dp"
+        android:layout_below="@+id/nom"
+        android:layout_toEndOf="@+id/imageView" />
 
     <TextView
         android:id="@+id/possede"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editeur"
-        android:layout_toEndOf="@+id/imageView"
-        android:layout_toStartOf="@+id/fini"
         android:text="@string/listitem.numero"
-        style="@style/PossedeText" />
+        style="@style/PossedeText"
+        android:layout_below="@+id/imageView"
+        android:layout_toEndOf="@+id/imageView" />
 
     <ImageView
         android:id="@+id/fini"
@@ -65,10 +65,10 @@
         android:id="@+id/manquant"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/possede"
-        android:layout_toEndOf="@+id/imageView"
         android:text="@string/listitem.manquant"
-        style="@style/ManquanteText" />
+        style="@style/ManquanteText"
+        android:layout_below="@+id/possede"
+        android:layout_alignStart="@+id/possede" />
 
     <TextView
         android:id="@+id/bd_id"
