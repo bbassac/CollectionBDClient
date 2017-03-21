@@ -1,6 +1,9 @@
 package displaylist.collectionbdclient.utils;
 
 import android.app.Activity;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
@@ -24,21 +27,34 @@ public class CollectionProvider {
     static SimpleChronometer chrono = new SimpleChronometer();
 
     static public Collection getEntireCollection(Activity activity) {
-        // Getting JSON from URL
-        String stringJson = null;
-        Collection listBD = null;
-        try {
-            chrono.start();
-            stringJson = WSProvider.getJSONFromUrl(getCollectionServerUrl(activity) +"/collection");
-            chrono.stop();
-            ToastUtils.display(activity,"Data loaded in "+chrono.getDuration()+" ms");
-            JsonParser jp = new JsonFactory().createJsonParser(new ByteArrayInputStream(stringJson.getBytes("UTF-8")));
-            //Jacksonize to bean
-            listBD = new ObjectMapper().readValue(jp, Collection.class);
-        } catch (Exception e) {
-            ToastUtils.display(activity, e.getMessage());
-        }
-       return listBD;
+
+           // Getting JSON from URL
+           String stringJson = null;
+           Collection listBD = null;
+           try {
+               if(isOnline(activity)) {
+                   chrono.start();
+                   stringJson = WSProvider.getJSONFromUrl(getCollectionServerUrl(activity) + "/collection");
+                   chrono.stop();
+               }else {
+                   stringJson= new MockDemo().getMockDemo();
+               }
+               ToastUtils.display(activity, "Data loaded in " + chrono.getDuration() + " ms");
+               JsonParser jp = new JsonFactory().createJsonParser(new ByteArrayInputStream(stringJson.getBytes("UTF-8")));
+               //Jacksonize to bean
+               listBD = new ObjectMapper().readValue(jp, Collection.class);
+           } catch (Exception e) {
+               ToastUtils.display(activity, e.getMessage());
+           }
+           return listBD;
+
+    }
+
+    static public boolean isOnline(Activity activity) {
+        ConnectivityManager cm =
+                (ConnectivityManager) activity.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        return netInfo != null && netInfo.isConnectedOrConnecting();
     }
 
     private static String getCollectionServerUrl(Activity activity) {

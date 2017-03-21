@@ -2,6 +2,7 @@ package displaylist.collectionbdclient.adapter;
 
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -80,10 +81,13 @@ public class ListBDAdapter extends BaseAdapter implements Filterable {
 
         String assetUrl = SerieUtils.getSerieImageUrl(displayActivity,serie);
         Picasso picasso = Picasso.with(context);
-        //Debug
-        //picasso.setIndicatorsEnabled(true);
-        picasso.load(assetUrl).resize(100, 120).into(imageview);
-
+        if(!TextUtils.isEmpty(assetUrl)) {
+            //Debug
+            //picasso.setIndicatorsEnabled(true);
+            picasso.load(assetUrl).resize(100, 120).into(imageview);
+        }else{
+            picasso.load(R.drawable.ic_launcher).resize(100, 120).into(imageview);
+        }
 
         return view;
     }
