@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="WhiteText" type="color">@color/white</item>
+    <item name="GreenText" type="color">#ff009900</item>
+    <item name="BlueText" type="color">#ff02a9ff</item>
+    <item name="RedText" type="color">#ffff0e1c</item>
+    <item name="BlackText" type="color">@color/black</item>
+    <item name="GoldBorder" type="color">#dfc11f</item>
+</resources>

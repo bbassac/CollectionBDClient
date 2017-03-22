@@ -37,12 +37,16 @@ public class CollectionProvider {
                    stringJson = WSProvider.getJSONFromUrl(getCollectionServerUrl(activity) + "/collection");
                    chrono.stop();
                }else {
+                   chrono.start();
                    stringJson= new MockDemo().getMockDemo();
+                   chrono.stop();
                }
                ToastUtils.display(activity, "Data loaded in " + chrono.getDuration() + " ms");
-               JsonParser jp = new JsonFactory().createJsonParser(new ByteArrayInputStream(stringJson.getBytes("UTF-8")));
+               final ObjectMapper mapper = new ObjectMapper();
+               final JsonFactory factory = mapper.getJsonFactory();
+               JsonParser jp = factory.createJsonParser(new ByteArrayInputStream(stringJson.getBytes("UTF-8")));
                //Jacksonize to bean
-               listBD = new ObjectMapper().readValue(jp, Collection.class);
+               listBD = mapper.readValue(jp, Collection.class);
            } catch (Exception e) {
                ToastUtils.display(activity, e.getMessage());
            }

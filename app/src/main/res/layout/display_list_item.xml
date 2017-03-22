@@ -17,18 +17,19 @@
         android:id="@+id/nom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/imageView"
         android:text="@string/listitem_nom"
-        style="@style/WhiteText" />
+        style="@style/WhiteText"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/imageView" />
 
     <TextView
         android:id="@+id/serie_counter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/nom"
         android:text="@string/listitem_counter"
-        style="@style/WhiteText" />
+        style="@style/WhiteText"
+        android:layout_above="@+id/fini"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:id="@+id/editeur"

@@ -55,7 +55,7 @@ public class MockDemo {
                 "\t},\n" +
                 "\t{\n" +
                 "\t\t\"id\": 819,\n" +
-                "\t\t\"nom\": \"Chroniques de la guerre des Fees\",\n" +
+                "\t\t\"nom\": \"Chroniques de la guerre des Fees avec un titre super long\",\n" +
                 "\t\t\"fini\": true,\n" +
                 "\t\t\"imageUrl\": \"\",\n" +
                 "\t\t\"listPossede\": [{\n" +
