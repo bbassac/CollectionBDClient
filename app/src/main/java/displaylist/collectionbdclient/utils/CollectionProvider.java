@@ -5,7 +5,6 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.preference.PreferenceManager;
-import android.util.Log;
 
 import com.github.kevinsawicki.http.HttpRequest;
 
@@ -38,7 +37,7 @@ public class CollectionProvider {
                    chrono.stop();
                }else {
                    chrono.start();
-                   stringJson= new MockDemo().getMockDemo();
+                   stringJson= new MockDemo().getMockDemoCollection();
                    chrono.stop();
                }
                ToastUtils.display(activity, "Data loaded in " + chrono.getDuration() + " ms");
@@ -66,7 +65,9 @@ public class CollectionProvider {
     }
 
     static public void setBDAsPossede(Activity activity,Long bdId){
-        WSProvider.postJSONFromUrl(getCollectionServerUrl(activity) +"/switch/"+bdId);
+        if(isOnline(activity)) {
+            WSProvider.postJSONFromUrl(getCollectionServerUrl(activity) + "/switch/" + bdId);
+        }
     }
 
     public static List<ManageListItem> getListManquante(Activity activity) {
@@ -74,9 +75,15 @@ public class CollectionProvider {
         String stringJson = null;
         List<ManageListItem> listBD = null;
         try {
-            chrono.start();
-            stringJson = WSProvider.getJSONFromUrl(getCollectionServerUrl(activity) +"/bds/manquantes");
-            chrono.stop();
+            if(isOnline(activity)) {
+                chrono.start();
+                stringJson = WSProvider.getJSONFromUrl(getCollectionServerUrl(activity) +"/bds/manquantes");
+                chrono.stop();
+            }else{
+                chrono.start();
+                stringJson = new MockDemo().getMockManquante();
+                chrono.stop();
+            }
             ToastUtils.display(activity,"Data loaded in "+chrono.getDuration()+" ms");
             JsonParser jp = new JsonFactory().createJsonParser(new ByteArrayInputStream(stringJson.getBytes("UTF-8")));
             //Jacksonize to bean

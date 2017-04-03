@@ -6,7 +6,85 @@ package displaylist.collectionbdclient.utils;
 
 public class MockDemo {
 
-    public String getMockDemo(){
+    public String getMockManquante(){
+        String mock="[\n" +
+                "{\n" +
+                "\"serieId\": 817,\n" +
+                "\"bdid\": 6644,\n" +
+                "\"serieName\": \"La licorne\",\n" +
+                "\"numero\": \"HS1\",\n" +
+                "\"titre\": \"Le Grimoire de La Licorne 12/2010\",\n" +
+                "\"editeur\": \"Delcourt\",\n" +
+                "\"urlImage\": \"\"\n" +
+                "},\n" +
+                "{\n" +
+                "\"serieId\": 825,\n" +
+                "\"bdid\": 6674,\n" +
+                "\"serieName\": \"Le chant des Stryges\",\n" +
+                "\"numero\": \"2\",\n" +
+                "\"titre\": \"Pièges\",\n" +
+                "\"editeur\": \"Delcourt\",\n" +
+                "\"urlImage\": \"\"\n" +
+                "},\n" +
+                "{\n" +
+                "\"serieId\": 825,\n" +
+                "\"bdid\": 6675,\n" +
+                "\"serieName\": \"Le chant des Stryges\",\n" +
+                "\"numero\": \"3\",\n" +
+                "\"titre\": \"Emprises\",\n" +
+                "\"editeur\": \"Delcourt\",\n" +
+                "\"urlImage\": \"\"\n" +
+                "},\n" +
+                "{\n" +
+                "\"serieId\": 825,\n" +
+                "\"bdid\": 6676,\n" +
+                "\"serieName\": \"Le chant des Stryges\",\n" +
+                "\"numero\": \"4\",\n" +
+                "\"titre\": \"Expériences\",\n" +
+                "\"editeur\": \"Delcourt\",\n" +
+                "\"urlImage\": \"\"\n" +
+                "},\n" +
+                "{\n" +
+                "\"serieId\": 825,\n" +
+                "\"bdid\": 6677,\n" +
+                "\"serieName\": \"Le chant des Stryges\",\n" +
+                "\"numero\": \"5\",\n" +
+                "\"titre\": \"Vestiges\",\n" +
+                "\"editeur\": \"Delcourt\",\n" +
+                "\"urlImage\": \"\"\n" +
+                "},\n" +
+                "{\n" +
+                "\"serieId\": 825,\n" +
+                "\"bdid\": 6678,\n" +
+                "\"serieName\": \"Le chant des Stryges\",\n" +
+                "\"numero\": \"6\",\n" +
+                "\"titre\": \"Existences\",\n" +
+                "\"editeur\": \"Delcourt\",\n" +
+                "\"urlImage\": \"\"\n" +
+                "},\n" +
+                "{\n" +
+                "\"serieId\": 825,\n" +
+                "\"bdid\": 6679,\n" +
+                "\"serieName\": \"Le chant des Stryges\",\n" +
+                "\"numero\": \"7\",\n" +
+                "\"titre\": \"Rencontres\",\n" +
+                "\"editeur\": \"Delcourt\",\n" +
+                "\"urlImage\": \"\"\n" +
+                "},\n" +
+                "{\n" +
+                "\"serieId\": 825,\n" +
+                "\"bdid\": 6680,\n" +
+                "\"serieName\": \"Le chant des Stryges\",\n" +
+                "\"numero\": \"8\",\n" +
+                "\"titre\": \"Défis\",\n" +
+                "\"editeur\": \"Delcourt\",\n" +
+                "\"urlImage\": \"\"\n" +
+                "}\n" +
+                "]";
+        return mock;
+    }
+
+    public String getMockDemoCollection(){
         String mock = "{\n" +
                 "\t\"id\": 17,\n" +
                 "\t\"listeSerie\": [{\n" +

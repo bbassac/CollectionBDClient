@@ -7,11 +7,9 @@
 
     <ImageView
         android:id="@+id/manquant_imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:layout_height="100dp"
         android:layout_alignParentStart="true"
-        android:maxHeight="30dp"
-        android:maxWidth="30dp"
         android:src="@drawable/address_book"
         android:contentDescription="@string/manquant_contentDescription" />
 
@@ -37,10 +35,10 @@
         android:id="@+id/manquant_nom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/manquant_editeur"
-        android:layout_toEndOf="@+id/manquant_imageView"
         android:text="@string/manquant_nom"
-        style="@style/ManquanteText" />
+        style="@style/ManquanteText"
+        android:layout_below="@+id/manquant_editeur"
+        android:layout_toEndOf="@+id/manquant_bd_id" />
 
     <TextView
         android:id="@+id/manquant_bd_id"
@@ -61,15 +59,14 @@
         style="@style/ManquanteText"/>
 
     <Button
-        android:layout_width="30dp"
-        android:layout_height="20dp"
         android:id="@+id/manquant_button"
-        android:typeface="serif"
-        android:longClickable="true"
-        android:layout_below="@+id/manquant_serie"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_alignParentEnd="true"
-        android:layout_above="@+id/manquant_nom"
-        android:layout_marginEnd="10dp"/>
+        android:layout_below="@+id/manquant_serie_id"
+        android:background="@drawable/check"
+        android:longClickable="true"
+        android:typeface="serif" />
 
 
 </RelativeLayout>

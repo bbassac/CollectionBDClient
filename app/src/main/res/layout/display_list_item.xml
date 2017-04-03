@@ -3,12 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+
     style="@style/LayoutBackground">
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="80dp"
         android:layout_height="100dp"
+        android:layout_marginTop="10dp"
         android:layout_alignParentStart="true"
         android:contentDescription="@string/listitem.couverture.description"
         android:src="@drawable/ic_launcher" />
@@ -17,6 +19,7 @@
         android:id="@+id/nom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="@string/listitem_nom"
         style="@style/WhiteText"
         android:layout_alignParentTop="true"
@@ -28,6 +31,7 @@
         android:layout_height="wrap_content"
         android:text="@string/listitem_counter"
         style="@style/WhiteText"
+        android:gravity="right"
         android:layout_above="@+id/fini"
         android:layout_alignParentEnd="true" />
 
