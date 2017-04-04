@@ -46,4 +46,8 @@
         <item name="android:dividerHeight">1dp</item>
     </style>
 
+    <style name="TopOffcet">
+        <item name="android:layout_marginTop">10dp</item>
+    </style>
+
 </resources>
