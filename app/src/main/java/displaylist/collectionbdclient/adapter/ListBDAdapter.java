@@ -74,6 +74,7 @@ public class ListBDAdapter extends BaseAdapter implements Filterable {
         ((TextView) view.findViewById(R.id.bd_id)).setText(String.valueOf(serie.getId()));
         ((ImageView) view.findViewById(R.id.fini)).setImageResource(SerieUtils.getResourceFini(serie));
         ((TextView) view.findViewById(R.id.editeur)).setText(serie.getEditeur());
+
         ((TextView) displayActivity.findViewById(R.id.counter)).setText("(" + filteredCollection.getListeSerie().size() + ")");
         ((TextView) view.findViewById(R.id.serie_counter)).setText(SerieUtils.getNbBdPossede(serie) + "/" + SerieUtils.getNbTotalBd(serie));
 

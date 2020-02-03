@@ -12,6 +12,7 @@
     <string name="dialogManquant">lorem ipsum</string>
     <string name="listitem_nom">nom série</string>
     <string name="listitem_editor">editor</string>
+    <string name="listitem_isbn"> </string>
     <string name="listitem.numero">1 2 3</string>
     <string name="listitem.fini">-</string>
     <string name="listitem.manquant">liste manquante</string>

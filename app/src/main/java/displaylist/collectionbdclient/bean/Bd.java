@@ -8,6 +8,7 @@ public class Bd {
     private String titre;
     private String numero;
     private String couvertureUrl;
+    private String isbn;
 
     public Bd() {
     }
@@ -49,5 +50,13 @@ public class Bd {
 
     public void setTitre(String titre) {
         this.titre = titre;
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
     }
 }

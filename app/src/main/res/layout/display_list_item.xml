@@ -44,6 +44,16 @@
         android:layout_toEndOf="@+id/imageView" />
 
     <TextView
+        android:id="@+id/isbn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/listitem_isbn"
+        style="@style/GreenText"
+        android:layout_marginTop="18dp"
+        android:layout_below="@+id/editeur"
+        android:layout_toEndOf="@+id/imageView" />
+
+    <TextView
         android:id="@+id/possede"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

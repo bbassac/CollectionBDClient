@@ -34,6 +34,7 @@ public class MyOnClickListener implements View.OnClickListener {
     public void onClick(View view) {
         String s_id = String.valueOf(((TextView) view.findViewById(R.id.bd_id)).getText());
         Serie serie = SerieUtils.getBDById(codeLeanChapterList, Integer.valueOf(s_id));
+
         if (!colapsedMap.containsKey(s_id) || colapsedMap.get(s_id) == true) {
             ((TextView) view.findViewById(R.id.possede)).setText(SerieUtils.getStringPossede(serie));
             ((TextView) view.findViewById(R.id.manquant)).setText(SerieUtils.getStringManquant(serie));
