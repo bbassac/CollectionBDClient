@@ -9,8 +9,6 @@ import com.github.johnpersano.supertoasts.SuperToast;
 import java.util.List;
 
 import displaylist.collectionbdclient.R;
-import displaylist.collectionbdclient.adapter.ManageBDAdapter;
-import displaylist.collectionbdclient.bean.Collection;
 import displaylist.collectionbdclient.bean.ManageListItem;
 
 /**
@@ -22,12 +20,10 @@ public class MyOnLongClickListener implements View.OnLongClickListener {
     private final int index;
     private Activity activity;
     private View itemView;
-    private ManageBDAdapter adapter;
 
-    public MyOnLongClickListener(ManageBDAdapter adapter, Activity activity,View view, List<ManageListItem> listItems, int index) {
+    public MyOnLongClickListener( Activity activity,View view, List<ManageListItem> listItems, int index) {
         this.activity = activity;
         this.itemView = view;
-        this.adapter=adapter;
         this.listItems= listItems;
         this.index = index;
     }
@@ -39,7 +35,6 @@ public class MyOnLongClickListener implements View.OnLongClickListener {
         ToastUtils.display(activity,serie_ID+" "+bd_id+" "+((TextView) itemView.findViewById(R.id.manquant_nom)).getText(), SuperToast.Duration.VERY_SHORT);
         listItems.remove(index);
         CollectionProvider.setBDAsPossede(activity,bd_id);
-        adapter.notifyDataSetChanged();
         return true;
     }
 

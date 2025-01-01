@@ -36,9 +36,7 @@ public class CollectionProvider {
                    stringJson = WSProvider.getJSONFromUrl(getCollectionServerUrl(activity) + "/collection");
                    chrono.stop();
                }else {
-                   chrono.start();
-                   stringJson= new MockDemo().getMockDemoCollection();
-                   chrono.stop();
+                   throw new CustomException("Not connected");
                }
                ToastUtils.display(activity, "Data loaded in " + chrono.getDuration() + " ms");
                final ObjectMapper mapper = new ObjectMapper();
@@ -80,9 +78,7 @@ public class CollectionProvider {
                 stringJson = WSProvider.getJSONFromUrl(getCollectionServerUrl(activity) +"/bds/manquantes");
                 chrono.stop();
             }else{
-                chrono.start();
-                stringJson = new MockDemo().getMockManquante();
-                chrono.stop();
+                throw new CustomException("Not connected");
             }
             ToastUtils.display(activity,"Data loaded in "+chrono.getDuration()+" ms");
             JsonParser jp = new JsonFactory().createJsonParser(new ByteArrayInputStream(stringJson.getBytes("UTF-8")));

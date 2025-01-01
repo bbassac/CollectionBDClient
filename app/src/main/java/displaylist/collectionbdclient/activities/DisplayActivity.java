@@ -55,7 +55,7 @@ public class DisplayActivity extends Activity {
         Log.i("","Preference loaded : " + url);
         if (url == null) {
             SharedPreferences.Editor editor = settings.edit();
-            editor.putString("collectionServerUrl", "http://93.21.76.72:8080");
+            editor.putString("collectionServerUrl", "https://custombdmanager-1-0.onrender.com");
             Log.i("","created default url: ");
             editor.apply();
         }
@@ -89,28 +89,21 @@ public class DisplayActivity extends Activity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch (item.getItemId()) {
-            case R.id.action_settings:
-                ToastUtils.display(DisplayActivity.this, FileUtils.getBuildDate(DisplayActivity.this));
-                return true;
-            case R.id.menu_settings:
-                createExampleDialog(DisplayActivity.this).show();
-                return true;
-
-            case R.id.menu_refresh:
-                new JSONParseTask().execute();
-                return true;
-            case R.id.menu_quit:
-                DisplayActivity.this.finish();
-                return true;
-
-            case R.id.menu_manage:
-                Intent intent=new Intent(DisplayActivity.this,ManageActivity.class);
-                startActivity(intent);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        int itemId = item.getItemId();
+        if (itemId == R.id.action_settings) {
+            ToastUtils.display(DisplayActivity.this, FileUtils.getBuildDate(DisplayActivity.this));
+            return true;
+        } else if (itemId == R.id.menu_settings) {
+            createExampleDialog(DisplayActivity.this).show();
+            return true;
+        } else if (itemId == R.id.menu_refresh) {
+            new JSONParseTask().execute();
+            return true;
+        } else if (itemId == R.id.menu_quit) {
+            DisplayActivity.this.finish();
+            return true;
         }
+        return super.onOptionsItemSelected(item);
 
     }
 
