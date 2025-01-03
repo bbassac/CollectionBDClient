@@ -16,8 +16,10 @@ import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import displaylist.collectionbdclient.bean.Bd;
 import displaylist.collectionbdclient.bean.Collection;
 import displaylist.collectionbdclient.bean.ManageListItem;
+import displaylist.collectionbdclient.bean.Serie;
 
 /**
  * Created by b.bassac on 29/12/2014.
@@ -44,11 +46,25 @@ public class CollectionProvider {
                JsonParser jp = factory.createJsonParser(new ByteArrayInputStream(stringJson.getBytes("UTF-8")));
                //Jacksonize to bean
                listBD = mapper.readValue(jp, Collection.class);
+               populateFakeIds(listBD);
            } catch (Exception e) {
                ToastUtils.display(activity, e.getMessage());
            }
            return listBD;
 
+    }
+
+    private static void populateFakeIds(Collection listBD) {
+        long i = 0;
+        for (Serie s:listBD.getListeSerie() ) {
+            s.setId(i++);
+            for (Bd bd : s.getListPossede()){
+                bd.setId(i++);
+            }
+            for (Bd bd : s.getListManquante()){
+                bd.setId(i++);
+            }
+        }
     }
 
     static public boolean isOnline(Activity activity) {
@@ -62,36 +78,6 @@ public class CollectionProvider {
         return PreferenceManager.getDefaultSharedPreferences(activity).getString("collectionServerUrl", null);
     }
 
-    static public void setBDAsPossede(Activity activity,Long bdId){
-        if(isOnline(activity)) {
-            WSProvider.postJSONFromUrl(getCollectionServerUrl(activity) + "/switch/" + bdId);
-        }
-    }
-
-    public static List<ManageListItem> getListManquante(Activity activity) {
-        // Getting JSON from URL
-        String stringJson = null;
-        List<ManageListItem> listBD = null;
-        try {
-            if(isOnline(activity)) {
-                chrono.start();
-                stringJson = WSProvider.getJSONFromUrl(getCollectionServerUrl(activity) +"/bds/manquantes");
-                chrono.stop();
-            }else{
-                throw new CustomException("Not connected");
-            }
-            ToastUtils.display(activity,"Data loaded in "+chrono.getDuration()+" ms");
-            JsonParser jp = new JsonFactory().createJsonParser(new ByteArrayInputStream(stringJson.getBytes("UTF-8")));
-            //Jacksonize to bean
-
-            ObjectMapper objectMapper = new ObjectMapper();
-            listBD = objectMapper.readValue(jp, objectMapper.getTypeFactory().constructCollectionType(List.class, ManageListItem.class));
-        } catch (Exception e) {
-            ToastUtils.display(activity, e.getMessage());
-            listBD = new ArrayList<>();
-        }
-       return listBD;
-    }
 
     private static class WSProvider {
 
@@ -101,11 +87,6 @@ public class CollectionProvider {
             // return JSON String
             return httpRequest.body();
 
-        }
-
-
-        public static void postJSONFromUrl(String s) {
-                HttpRequest.post(s).basic("bruno","bruno").accept("text/plain; charset=utf-8").code();
         }
     }
 }

@@ -13,9 +13,12 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.TimeZone;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
+
+import displaylist.collectionbdclient.BuildConfig;
 
 
 public class FileUtils {
@@ -70,19 +73,8 @@ public class FileUtils {
     }
 
     public static String getBuildDate(Activity activity) {
-        String s = "";
-        try {
-            ApplicationInfo ai = activity.getPackageManager().getApplicationInfo(activity.getPackageName(), 0);
-            ZipFile zf = new ZipFile(ai.sourceDir);
-            ZipEntry ze = zf.getEntry("META-INF/MANIFEST.MF");
-            long time = ze.getTime();
-            SimpleDateFormat formatter = (SimpleDateFormat) SimpleDateFormat.getInstance();
-            formatter.setTimeZone(TimeZone.getDefault());
-            s = formatter.format(new java.util.Date(time));
-            zf.close();
-        } catch (Exception e) {
-        }
-        return s;
+        Date buildDate = new Date(BuildConfig.TIMESTAMP);
+        return buildDate.toString();
     }
 
 

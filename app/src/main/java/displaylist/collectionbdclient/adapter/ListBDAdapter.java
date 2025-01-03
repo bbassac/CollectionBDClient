@@ -3,6 +3,7 @@ package displaylist.collectionbdclient.adapter;
 
 import android.content.Context;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.io.Console;
 import java.util.Locale;
 
 import displaylist.collectionbdclient.R;
@@ -80,11 +82,12 @@ public class ListBDAdapter extends BaseAdapter implements Filterable {
 
         imageview.setImageBitmap(null);
 
-        String assetUrl = SerieUtils.getSerieImageUrl(displayActivity,serie);
-        Picasso picasso = Picasso.with(context);
+        String assetUrl = serie.getImageUrl();
+        Picasso picasso = Picasso.get();
+        picasso.setIndicatorsEnabled(true);
         if(!TextUtils.isEmpty(assetUrl)) {
             //Debug
-            //picasso.setIndicatorsEnabled(true);
+            Log.i("Picasso",serie.getNom() + " " + assetUrl);
             picasso.load(assetUrl).resize(100, 120).into(imageview);
         }else{
             picasso.load(R.drawable.ic_launcher).resize(100, 120).into(imageview);

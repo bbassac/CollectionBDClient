@@ -57,10 +57,6 @@ public class SerieUtils {
         return String.valueOf(serie.getListPossede() == null || serie.getListManquante() == null ? "--" : serie.getListManquante().size() + serie.getListPossede().size());
     }
 
-    public static String getSerieImageUrl(Activity activity, Serie serie){
-        return serie.getImageUrl();
-    }
-
     public static String getStringEditeur(Serie serie) {
        return serie.getEditeur()==null ? "" : serie.getEditeur();
     }
