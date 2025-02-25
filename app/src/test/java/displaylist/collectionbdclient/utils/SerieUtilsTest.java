@@ -1,6 +1,6 @@
 package displaylist.collectionbdclient.utils;
 
-import junit.framework.Assert;
+import static junit.framework.TestCase.assertNotNull;
 
 import org.junit.Test;
 
@@ -16,10 +16,10 @@ public class SerieUtilsTest {
     public void testGetStringPossede_vide() {
         Serie s = new Serie();
         Bd bd = new Bd(1L, "numero", "titre", "url");
-        List<Bd> listPossede = new ArrayList<Bd>();
+        List<Bd> listPossede = new ArrayList<>();
         listPossede.add(bd);
         s.setListPossede(listPossede);
         String result = SerieUtils.getStringPossede(s);
-        Assert.assertNotNull(result);
+        assertNotNull(result);
     }
 }

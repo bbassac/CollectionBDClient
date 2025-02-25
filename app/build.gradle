@@ -3,10 +3,6 @@ apply plugin: 'com.android.application'
 android {
     compileSdk 35
     namespace = "displaylist.collectionbdclient"
-    dexOptions {
-        jumboMode true
-        javaMaxHeapSize "4g"
-    }
     buildFeatures {
         buildConfig true
     }
@@ -45,9 +41,9 @@ android {
         }
     }
     packagingOptions {
-        exclude 'META-INF/ASL2.0'
-        exclude 'META-INF/LICENSE'
-        exclude 'META-INF/NOTICE'
+        resources {
+            excludes += ['META-INF/ASL2.0', 'META-INF/LICENSE', 'META-INF/NOTICE']
+        }
     }
     productFlavors {
     }
@@ -55,6 +51,10 @@ android {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
         encoding 'UTF-8'
+        tasks.withType(JavaCompile).configureEach {
+            //enable compilation in a separate daemon process
+            options.deprecation=true
+        }
     }
 
 }

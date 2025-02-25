@@ -13,6 +13,7 @@ import org.codehaus.jackson.JsonParser;
 import org.codehaus.jackson.map.ObjectMapper;
 
 import java.io.ByteArrayInputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,7 +44,7 @@ public class CollectionProvider {
                ToastUtils.display(activity, "Data loaded in " + chrono.getDuration() + " ms");
                final ObjectMapper mapper = new ObjectMapper();
                final JsonFactory factory = mapper.getJsonFactory();
-               JsonParser jp = factory.createJsonParser(new ByteArrayInputStream(stringJson.getBytes("UTF-8")));
+               JsonParser jp = factory.createJsonParser(new ByteArrayInputStream(stringJson.getBytes(StandardCharsets.UTF_8)));
                //Jacksonize to bean
                listBD = mapper.readValue(jp, Collection.class);
                populateFakeIds(listBD);
